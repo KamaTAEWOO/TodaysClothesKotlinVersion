@@ -15,3 +15,8 @@ dependencyResolutionManagement {
 
 rootProject.name = "TodaysClothes_kotlin"
 include ':app'
+include ':core'
+include ':data'
+include ':design'
+include ':domain'
+include ':presentation'
