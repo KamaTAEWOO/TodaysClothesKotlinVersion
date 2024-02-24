@@ -27,9 +27,18 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
 }
 
 dependencies {
+
+    implementation(project(":design"))
+    implementation(project(":domain"))
+    implementation(project(":core"))
 
     implementation "androidx.core:core-ktx:${core_version}"
     implementation "androidx.appcompat:appcompat:${appcompat_version}"

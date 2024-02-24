@@ -9,6 +9,7 @@ buildscript {
         junit_version = '4.13.2'
         espresso_version = '3.5.1'
         ext_junit_version = '1.1.5'
+        timber_version = '5.0.1'
     }
 
     dependencies {
