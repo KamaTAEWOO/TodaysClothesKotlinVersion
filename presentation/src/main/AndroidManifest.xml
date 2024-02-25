@@ -7,7 +7,8 @@
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-    <application>
+    <application
+        android:theme="@style/Theme.WeatherInfo">
         <activity
             android:name=".view.MainViewActivity"
             android:exported="true" />

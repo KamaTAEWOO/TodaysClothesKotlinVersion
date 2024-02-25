@@ -9,6 +9,12 @@
 <!--    </style>-->
 
 <!--    TODO : 나눔 스퀘어 폰트 사용-->
+
+    <style name="nanumsquare_extrabold_75">
+        <item name="fontFamily">@font/nanumsquare_extrabold</item>
+        <item name="android:textSize">75sp</item>
+    </style>
+
     <style name="nanumsquare_extrabold_20">
         <item name="fontFamily">@font/nanumsquare_extrabold</item>
         <item name="android:textSize">20sp</item>

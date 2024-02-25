@@ -26,7 +26,7 @@
         android:layout_height="120dp"
         android:text="@string/splash_name1"
         android:textColor="@color/main_tv"
-        style="@style/nanumsquare_bold_75"
+        style="@style/nanumsquare_extrabold_75"
         app:layout_constraintTop_toBottomOf="@id/iv_logo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -38,7 +38,7 @@
         android:layout_gravity="center"
         android:layout_marginBottom="8dp"
         android:text="@string/splash_name2"
-        style="@style/nanumsquare_bold_75"
+        style="@style/nanumsquare_extrabold_75"
         android:textColor="@color/main_tv"
         app:layout_constraintTop_toBottomOf="@id/tv_name1"
         app:layout_constraintStart_toStartOf="parent"
