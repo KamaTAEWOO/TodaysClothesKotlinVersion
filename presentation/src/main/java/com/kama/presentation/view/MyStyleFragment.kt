@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.View
 import com.kama.core.base.BaseFragment
 import com.kama.presentation.databinding.FragmentMyStyleBinding
+import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
+@AndroidEntryPoint
 class MyStyleFragment : BaseFragment<FragmentMyStyleBinding>() {
 
     private val TAG = "WeatherFragment::"

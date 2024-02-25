@@ -1,7 +1,9 @@
 package com.kama.todaysclothes_kotlin
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.kama.presentation.view.SplashActivity
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
@@ -17,6 +19,6 @@ class MainActivity : AppCompatActivity() {
          * 앱 시작
          * */
         Timber.d("$TAG::앱 시작")
-        //startActivity(Intent(this, SplashActivity::class.java))
+        startActivity(Intent(this, SplashActivity::class.java))
     }
 }

@@ -9,8 +9,10 @@ import com.kama.core.base.BaseFragment
 import com.kama.presentation.R
 import com.kama.presentation.databinding.FragmentMyClosetBinding
 import com.kama.presentation.databinding.FragmentRecommendClothesBinding
+import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
+@AndroidEntryPoint
 class MyClosetFragment : BaseFragment<FragmentMyClosetBinding>() {
 
     private val TAG = "WeatherFragment::"

@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.View
 import com.kama.core.base.BaseFragment
 import com.kama.presentation.databinding.FragmentRecommendClothesBinding
+import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
+@AndroidEntryPoint
 class RecommendClothesFragment : BaseFragment<FragmentRecommendClothesBinding>() {
 
     private val TAG = "WeatherFragment::"
