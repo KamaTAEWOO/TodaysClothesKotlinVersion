@@ -10,6 +10,10 @@ buildscript {
         espresso_version = '3.5.1'
         ext_junit_version = '1.1.5'
         timber_version = '5.0.1'
+        activity_version = '1.7.0'
+        viewmodel_version = '2.6.2'
+        lifecycle_extensions_version = '2.2.0'
+        lifecycle_compiler_version = '2.2.0'
     }
 
     dependencies {
