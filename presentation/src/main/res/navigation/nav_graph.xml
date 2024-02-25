@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_nav_graph"
+    app:startDestination="@id/weather_fragment">
+
+    <fragment
+        android:id="@+id/weather_fragment"
+        android:name="com.kama.presentation.view.WeatherFragment"
+        android:label="@string/weather_fragment"
+        tools:layout="@layout/fragment_weather" />
+
+    <fragment
+        android:id="@+id/recommend_clothes_fragment"
+        android:name="com.kama.presentation.view.RecommendClothesFragment"
+        android:label="@string/recommend_clothes_fragment"
+        tools:layout="@layout/fragment_recommend_clothes" />
+
+    <fragment
+        android:id="@+id/my_closet_fragment"
+        android:name="com.kama.presentation.view.MyClosetFragment"
+        android:label="@string/my_closet_fragment"
+        tools:layout="@layout/fragment_my_closet" />
+
+    <fragment
+        android:id="@+id/my_style_fragment"
+        android:name="com.kama.presentation.view.MyStyleFragment"
+        android:label="@string/my_style_fragment"
+        tools:layout="@layout/fragment_my_style" />
+
+</navigation>

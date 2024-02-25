@@ -1,4 +1,4 @@
-package com.kama.presentation.activity
+package com.kama.presentation.view
 
 import android.os.Bundle
 import com.kama.core.base.BaseActivity

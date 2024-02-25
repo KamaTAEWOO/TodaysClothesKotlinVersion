@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application>
         <activity
-            android:name=".activity.MyStyleSurveyActivity"
-            android:exported="false" />
+            android:name=".view.MainViewActivity"
+            android:exported="true" />
         <activity
-            android:name=".activity.SplashActivity"
-            android:exported="false" />
+            android:name=".view.MyStyleSurveyActivity"
+            android:exported="true" />
+        <activity
+            android:name=".view.SplashActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

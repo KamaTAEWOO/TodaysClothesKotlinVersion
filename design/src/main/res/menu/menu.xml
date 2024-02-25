@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/weather_fragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_weather"
+        android:title="@string/weather_fragment" />
+
+    <item
+        android:id="@+id/recommend_clothes_fragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_clothes"
+        android:title="@string/recommend_clothes_fragment" />
+
+    <item
+        android:id="@+id/my_closet_fragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_closet"
+        android:title="@string/my_closet_fragment" />
+
+    <item
+        android:id="@+id/my_style_fragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_mycody"
+        android:title="@string/my_style_fragment" />
+</menu>

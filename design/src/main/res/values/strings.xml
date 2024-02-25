@@ -1,3 +1,33 @@
 <resources>
-    <string name="app_name">TodaysClothes_kotlin</string>
+    <string name="app_name">뭐 입을까?</string>
+
+    <!--    Bottom navigation-->
+    <string name="weather_fragment">날씨</string>
+    <string name="recommend_clothes_fragment">추천 옷</string>
+    <string name="my_closet_fragment">내 옷장</string>
+    <string name="my_style_fragment">내 스타일</string>
+
+    <!--    Weather Data-->
+    <string name="not_data">데이터 없음</string>
+    <string name="splash_name1">Today\'s</string>
+    <string name="splash_name2">Clothes</string>
+    <string name="splash_name3">오늘 날씨 어때? 뭐 입지?</string>
+    <string name="splash_name4">출처: 앱에 사용된 이미지의 출처는 무신사에 있음을 알림.</string>
+
+    <!--    Survey-->
+    <string name="survey_title">My Style Setting</string>
+    <string name="survey_sex">성별</string>
+    <string name="survey_sex_man">남자</string>
+    <string name="survey_sex_woman">여자</string>
+    <string name="survey_heat">더위</string>
+    <string name="survey_heat_very">더위를 많이 타는 타입</string>
+    <string name="survey_heat_little">더위를 적게 타는 타입</string>
+    <string name="survey_style">옷 스타일</string>
+    <string name="survey_style_casual">캐주얼 스타일</string>
+    <string name="survey_style_street">스트릿 스타일</string>
+    <string name="survey_style_vintage">빈티지 스타일</string>
+    <string name="survey_style_dandy">댄디 스타일</string>
+    <string name="survey_style_sporty">스포티 스타일</string>
+    <string name="survey_confirm">확인</string>
+    <string name="survey_cancel">취소</string>
 </resources>
