@@ -10,4 +10,7 @@
 
     <color name="main_color">#34C5F0</color>
     <color name="main_tv">#0C0A0A</color>
+
+    <color name="light_silver">#FFD9D9D9</color>
+    <color name="chinese_black_26">#FF421414</color>
 </resources>
