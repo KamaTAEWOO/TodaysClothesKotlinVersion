@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kama.domain.model.WeatherDataEntity
-import com.kama.domain.repository.WeatherDataRepository
+import com.kama.domain.usecase.WeatherDataUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.launchIn
@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val weatherDataRepository: WeatherDataRepository
+    private val useCase: WeatherDataUseCase
 ) : ViewModel() {
 
     private val TAG = "MainViewModel::"
@@ -33,7 +33,7 @@ class MainViewModel @Inject constructor(
         baseTime: String,
         nx: String,
         ny: String
-    ) = weatherDataRepository.requestWeatherData(
+    ) = useCase(
         pageNo,
         numOfRows,
         dataType,
@@ -67,8 +67,7 @@ class MainViewModel @Inject constructor(
 
     // 날씨 형태에 따른 분석(category)
     private fun weatherShape(shape: String): String? {
-        var data = ""
-        data = when (shape) {
+        val data = when (shape) {
             "POP" -> "강수확률"
             "R06" -> "6시간 강수량"
             "REH" -> "습도"
@@ -131,8 +130,7 @@ class MainViewModel @Inject constructor(
          * 0200, 0500, 0800 ~ 2300까지
          * 그래서 시간을 입력했을때 switch문으로 조회 가능한 시간대로 변경해주었다.
          */
-        var time = time
-        time = when (time) {
+        val time = when (time) {
             "0200", "0300", "0400" -> "0200"
             "0500", "0600", "0700" -> "0500"
             "0800", "0900", "1000" -> "0800"
