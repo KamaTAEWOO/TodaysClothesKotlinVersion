@@ -5,12 +5,18 @@ plugins {
     id 'com.google.dagger.hilt.android'
 }
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
 android {
     namespace 'com.kama.core'
     compileSdk 33
 
     defaultConfig {
         minSdk 26
+
+        buildConfigField "String", "API_KEY", properties['API_KEY']
+        buildConfigField "String", "BASE_URL", properties['BASE_URL']
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -37,7 +43,7 @@ android {
 
 dependencies {
 
-    implementation(project(":data"))
+    implementation(project(":domain"))
 
     // hilt
     implementation "com.google.dagger:hilt-android:${hilt_version}"
@@ -45,6 +51,17 @@ dependencies {
 
     // Timber
     implementation "com.jakewharton.timber:timber:${timber_version}"
+
+    // retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    // okhttp
+    implementation 'com.squareup.okhttp3:okhttp:4.9.2'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.1'
+
+    // gson
+    implementation 'com.google.code.gson:gson:2.8.9'
 
     // android
     implementation "androidx.activity:activity-ktx:${activity_version}"

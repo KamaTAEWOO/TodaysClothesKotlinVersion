@@ -17,7 +17,7 @@ object WeatherUtil {
     const val PAGE_NO = 1
     const val NUM_OF_ROWS = 1000
     const val DATA_TYPE = "JSON"
-    var BASE_DATE = "20240101"
+    var BASE_DATE = "20240302"
     const val BASE_TIME = "0500"
     const val NX = "55"
     const val NY = "127"
