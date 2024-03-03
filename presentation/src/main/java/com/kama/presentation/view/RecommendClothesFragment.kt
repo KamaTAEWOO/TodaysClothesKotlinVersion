@@ -22,6 +22,10 @@ class RecommendClothesFragment : BaseFragment<FragmentRecommendClothesBinding>()
     private val TAG = "WeatherFragment::"
     private lateinit var mainViewModel: MainViewModel
 
+    // 설문 조사에 따른 나의 스타일
+    private val surveyStyle = ""
+
+
     override fun getFragmentBinding(): FragmentRecommendClothesBinding =
         FragmentRecommendClothesBinding.inflate(layoutInflater)
 
@@ -39,6 +43,47 @@ class RecommendClothesFragment : BaseFragment<FragmentRecommendClothesBinding>()
 
     private fun init() {
         Timber.i("$TAG::init()")
+
+        tempClothes()
+    }
+
+    /**
+     * 날씨 최고 온도와 최저 온도에 따라 style을 추천
+     * 설문조사에 따른 나의 스타일도 참고
+     * */
+    private fun tempClothes() {
+        val tempArray = intArrayOf(4, 5, 9, 13, 17, 21, 25, 29)
+        val lowTemp = 2
+        val highTemp = 35
+
+        // lowTemp에 따른 옷 추천
+        for (i in tempArray) {
+            if(tempArray.first() > lowTemp) {
+                lowRecommendClothesShow(i)
+                break
+            } else if(lowTemp > i) {
+                lowRecommendClothesShow(i)
+                break
+            }
+        }
+
+        // highTemp에 따른 옷 추천
+        for (i in tempArray) {
+            if(highTemp < i) {
+                highRecommendClothesShow(i)
+                break
+            } else if(tempArray.last() == i) {
+                highRecommendClothesShow(i)
+            }
+        }
+    }
+
+    private fun lowRecommendClothesShow(temp: Int) {
+        Timber.i("$TAG::lowRecommendClothesShow() lowTemp : $temp")
+    }
+
+    private fun highRecommendClothesShow(temp: Int) {
+        Timber.i("$TAG::highRecommendClothesShow() lowTemp : $temp")
     }
 
     private fun swipeRefresh() {
