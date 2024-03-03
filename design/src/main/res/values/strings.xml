@@ -8,7 +8,7 @@
     <string name="my_style_fragment">내 스타일</string>
 
     <!--    Weather Data-->
-    <string name="not_data">데이터 없음</string>
+    <string name="waiting_data">잠시만 기다려주세요.</string>
     <string name="splash_name1">Today\'s</string>
     <string name="splash_name2">Clothes</string>
     <string name="splash_name3">오늘 날씨 어때? 뭐 입지?</string>
