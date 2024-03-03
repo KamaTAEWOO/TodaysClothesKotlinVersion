@@ -16,8 +16,8 @@ internal class ClothesStyleWoman {
     }
 
     //4(),5(),9(),12(),17(),20(),23(),28()
-    // 댄디 스타일.
-    // 여자  더위많이탐 댄디 4도
+    // TODO : 댄디 스타일.
+    // TODO : 여자  더위많이탐 댄디 4도
     var BAD4 = intArrayOf(
         R.drawable.w_dandy_pinksweatshirt,
         R.drawable.w_dandy_overshirt,
@@ -282,8 +282,8 @@ internal class ClothesStyleWoman {
     )
 
     //***************************************************************************************************
-    // 캐주얼 스타일.
-    // 여자  더위많이탐 캐주얼 4도
+    // TODO : 캐주얼 스타일.
+    // TODO : 여자  더위많이탐 캐주얼 4도
     var BAA4 = intArrayOf(
         R.drawable.w_casual_pinkweater,
         R.drawable.w_casual_onpi,
@@ -524,8 +524,8 @@ internal class ClothesStyleWoman {
     )
 
     //***************************************************************************************************
-    // 스포티 스타일 BAE, BBE
-    // 여 더위많이탐 스포티 4도
+    // TODO : 스포티 스타일 BAE, BBE
+    // TODO : 여 더위많이탐 스포티 4도
     var BAE4 = intArrayOf(
         R.drawable.sporty_blackmtm, R.drawable.f_sporty_longsleeve, R.drawable.ic_xxx,
         R.drawable.sporty_trainingheavyouter, R.drawable.f_longpadding, R.drawable.longpadding,
@@ -904,8 +904,8 @@ internal class ClothesStyleWoman {
     )
 
     //***************************************************************************************************
-    // 스트릿 스타일
-    // 여 더위많이탐 스트릿 BAC BBC
+    // TODO : 스트릿 스타일
+    // TODO : 여 더위많이탐 스트릿 BAC BBC
     var BAC4 = intArrayOf(
         R.drawable.f_street_hood,
         R.drawable.street_warm_knet,

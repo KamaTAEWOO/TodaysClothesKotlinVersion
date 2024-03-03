@@ -16,8 +16,8 @@ internal class ClothesStyleMan {
     }
 
     //4(),5(),9(),12(),17(),20(),23(),28()
-    // 댄디 스타일.
-    // 남자  더위많이탐 댄디 4도
+    // TODO : 댄디 스타일.
+    // TODO : 남자  더위많이탐 댄디 4도
     var AAD4 = intArrayOf(
         R.drawable.m_dandy_agneat,
         R.drawable.m_dandy_darkobneat,
@@ -234,8 +234,8 @@ internal class ClothesStyleMan {
     )
 
     //***************************************************************************************************
-    // 캐주얼 스타일.
-    // 남자  더위많이탐 캐주얼 4도
+    // TODO : 캐주얼 스타일.
+    // TODO : 남자  더위많이탐 캐주얼 4도
     var AAA4 = intArrayOf(
         R.drawable.m_casual_rugbyshirts, R.drawable.m_casual_overman, R.drawable.m_casual_gmantoman,
         R.drawable.m_casual_longpadding, R.drawable.m_casual_sropadding, R.drawable.ic_xxx,
@@ -452,8 +452,8 @@ internal class ClothesStyleMan {
     )
 
     //***************************************************************************************************
-    // 스포티 스타일 AAE, ABE
-    // 남 더위많이탐 스포티 4도
+    // TODO : 스포티 스타일 AAE, ABE
+    // TODO : 남 더위많이탐 스포티 4도
     var AAE4 = intArrayOf(
         R.drawable.black_long, R.drawable.sporty_blackmtm, R.drawable.ic_xxx,
         R.drawable.sporty_trainingheavyouter, R.drawable.sheep_shortpadding, R.drawable.longpadding,
@@ -618,8 +618,8 @@ internal class ClothesStyleMan {
     )
 
     //***************************************************************************************************
-    // 빈티지 스타일 AAB, ABB
-    // 남 더위많이탐 빈티지
+    // TODO : 빈티지 스타일 AAB, ABB
+    // TODO : 남 더위많이탐 빈티지
     var AAB4 = intArrayOf(
         R.drawable.f_vintage_longshirt, R.drawable.vintage_longshirt, R.drawable.ic_xxx,
         R.drawable.vintage_heavyouter2, R.drawable.vintage_shortpadding, R.drawable.longpadding,
@@ -784,8 +784,8 @@ internal class ClothesStyleMan {
     )
 
     //***************************************************************************************************
-    // 스트릿 스타일
-    // 남 더위많이탐 스트릿 AAC ABC
+    // TODO : 스트릿 스타일
+    // TODO : 남 더위많이탐 스트릿 AAC ABC
     var AAC4 = intArrayOf(
         R.drawable.street_warm_hood, R.drawable.street_warm_knet, R.drawable.street_warm_neck,
         R.drawable.street_short_padding, R.drawable.street_mustang, R.drawable.street_baseball,
