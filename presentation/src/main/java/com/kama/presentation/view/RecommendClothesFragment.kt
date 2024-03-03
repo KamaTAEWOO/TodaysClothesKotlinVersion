@@ -22,8 +22,13 @@ class RecommendClothesFragment : BaseFragment<FragmentRecommendClothesBinding>()
     private val TAG = "WeatherFragment::"
     private lateinit var mainViewModel: MainViewModel
 
+    // 온도
+    private val tempArray = intArrayOf(4, 5, 9, 13, 17, 21, 25, 29)
+
     // 설문 조사에 따른 나의 스타일
-    private val surveyStyle = ""
+    private val surveyStyle = "casual"
+    // 설문 조사에 따른 나의 더위 타입 정도
+    private val surveyHotType = "많이 탐"
 
 
     override fun getFragmentBinding(): FragmentRecommendClothesBinding =
@@ -52,17 +57,16 @@ class RecommendClothesFragment : BaseFragment<FragmentRecommendClothesBinding>()
      * 설문조사에 따른 나의 스타일도 참고
      * */
     private fun tempClothes() {
-        val tempArray = intArrayOf(4, 5, 9, 13, 17, 21, 25, 29)
         val lowTemp = 2
         val highTemp = 35
 
         // lowTemp에 따른 옷 추천
         for (i in tempArray) {
             if(tempArray.first() > lowTemp) {
-                lowRecommendClothesShow(i)
+                lowRecommendClothesCheck(i)
                 break
             } else if(lowTemp > i) {
-                lowRecommendClothesShow(i)
+                lowRecommendClothesCheck(i)
                 break
             }
         }
@@ -70,21 +74,42 @@ class RecommendClothesFragment : BaseFragment<FragmentRecommendClothesBinding>()
         // highTemp에 따른 옷 추천
         for (i in tempArray) {
             if(highTemp < i) {
-                highRecommendClothesShow(i)
+                highRecommendClothesCheck(i)
                 break
             } else if(tempArray.last() == i) {
-                highRecommendClothesShow(i)
+                highRecommendClothesCheck(i)
             }
         }
     }
 
-    private fun lowRecommendClothesShow(temp: Int) {
+    private fun lowRecommendClothesCheck(temp: Int) {
         Timber.i("$TAG::lowRecommendClothesShow() lowTemp : $temp")
+        // AAA AAB AAC AAD AAE 더위 많이 타는 타입
+        // ABA ABB ABC ABD ABE 더위 적게 타는 타입
+        // surveyHotType / surveyStyle -> AAA
+        val myStyle = "AAA"
+        recommendClothesShow(temp, myStyle)
     }
 
-    private fun highRecommendClothesShow(temp: Int) {
+    private fun highRecommendClothesCheck(temp: Int) {
         Timber.i("$TAG::highRecommendClothesShow() lowTemp : $temp")
+        // AAA AAB AAC AAD AAE 더위 많이 타는 타입
+        // ABA ABB ABC ABD ABE 더위 적게 타는 타입
+        // surveyHotType / surveyStyle -> AAA
+        val myStyle = "AAA"
+        recommendClothesShow(temp, myStyle)
     }
+
+    // 최종 추천 옷 보여주깉
+    private fun recommendClothesShow(temp: Int, style: String) {
+        Timber.i("$TAG::recommendClothesShow() $temp, $style")
+
+        // 아우터 - 최고 온도 : 3개, 최저 온도 : 3개
+        // 상의 - 최고 온도 : 3개, 최저 온도 : 3개
+        // 하의 - 최고 온도 : 3개, 최저 온도 : 3개
+    }
+
+
 
     private fun swipeRefresh() {
         binding.swipeRefreshLayout.setOnRefreshListener {
