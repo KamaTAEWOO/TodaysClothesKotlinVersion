@@ -12,6 +12,11 @@ import com.kama.presentation.databinding.FragmentRecommendClothesBinding
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
+/**
+ * TODO : 내 옷장 만들기 (상의, 하의, 아우터)
+ *
+ * */
+
 @AndroidEntryPoint
 class MyClosetFragment : BaseFragment<FragmentMyClosetBinding>() {
 
