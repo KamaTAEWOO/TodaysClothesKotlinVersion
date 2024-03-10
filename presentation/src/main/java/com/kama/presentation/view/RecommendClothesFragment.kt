@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.kama.core.base.BaseFragment
 import com.kama.core.util.WeatherUtil
+import com.kama.presentation.clothes.ClothesStyleMan
 import com.kama.presentation.databinding.FragmentRecommendClothesBinding
 import com.kama.presentation.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,10 +26,12 @@ class RecommendClothesFragment : BaseFragment<FragmentRecommendClothesBinding>()
     // 온도
     private val tempArray = intArrayOf(4, 5, 9, 13, 17, 21, 25, 29)
 
+    // 설문 조사에 따른 나의 성별
+    private val surveyGender = "남자"
     // 설문 조사에 따른 나의 스타일
-    private val surveyStyle = "casual"
+    private val surveyStyle = "캐주얼"
     // 설문 조사에 따른 나의 더위 타입 정도
-    private val surveyHotType = "많이 탐"
+    private val surveyHotType = "많이"
 
 
     override fun getFragmentBinding(): FragmentRecommendClothesBinding =
@@ -57,8 +60,8 @@ class RecommendClothesFragment : BaseFragment<FragmentRecommendClothesBinding>()
      * 설문조사에 따른 나의 스타일도 참고
      * */
     private fun tempClothes() {
-        val lowTemp = 2
-        val highTemp = 35
+        val lowTemp = 2 // 최저 온도
+        val highTemp = 35 // 최고 온도
 
         // lowTemp에 따른 옷 추천
         for (i in tempArray) {
@@ -82,12 +85,19 @@ class RecommendClothesFragment : BaseFragment<FragmentRecommendClothesBinding>()
         }
     }
 
+    /**
+     * 정리
+     * 남자 : A, 여자 : B
+     * 더위 많이 타는 타입 : A, 더위 적게 타는 타입 : B
+     * 캐주얼 스타일 : A, 빈티지 스타일 : B, 스트릿 스타일 : C, 댄디 스타일 : D, 스포티 스타일 : E
+     * TODO : 해당 클래스에 사용된 변수들 모두 가지고 오는 함수를 만들어서 사용해 보기
+     * */
     private fun lowRecommendClothesCheck(temp: Int) {
         Timber.i("$TAG::lowRecommendClothesShow() lowTemp : $temp")
         // AAA AAB AAC AAD AAE 더위 많이 타는 타입
         // ABA ABB ABC ABD ABE 더위 적게 타는 타입
         // surveyHotType / surveyStyle -> AAA
-        val myStyle = "AAA"
+        val myStyle = "AAA4"
         recommendClothesShow(temp, myStyle)
     }
 
