@@ -19,7 +19,7 @@ import timber.log.Timber
 @AndroidEntryPoint
 class RecommendClothesFragment : BaseFragment<FragmentRecommendClothesBinding>() {
 
-    private val TAG = "WeatherFragment::"
+    private val TAG = "RecommendClothesFragment::"
     private lateinit var mainViewModel: MainViewModel
 
     // 온도

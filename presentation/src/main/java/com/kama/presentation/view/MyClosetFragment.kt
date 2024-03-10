@@ -20,7 +20,7 @@ import timber.log.Timber
 @AndroidEntryPoint
 class MyClosetFragment : BaseFragment<FragmentMyClosetBinding>() {
 
-    private val TAG = "WeatherFragment::"
+    private val TAG = "MyClosetFragment::"
 
     override fun getFragmentBinding(): FragmentMyClosetBinding =
         FragmentMyClosetBinding.inflate(layoutInflater)

@@ -19,7 +19,7 @@ import timber.log.Timber
 @AndroidEntryPoint
 class MyStyleFragment : BaseFragment<FragmentMyStyleBinding>() {
 
-    private val TAG = "WeatherFragment::"
+    private val TAG = "MyStyleFragment::"
     private lateinit var mainViewModel: MainViewModel
 
     override fun getFragmentBinding(): FragmentMyStyleBinding =
