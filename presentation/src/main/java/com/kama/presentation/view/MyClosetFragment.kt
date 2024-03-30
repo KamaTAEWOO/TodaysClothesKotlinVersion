@@ -1,20 +1,17 @@
 package com.kama.presentation.view
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
-import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.recyclerview.widget.GridLayoutManager
 import com.kama.core.base.BaseFragment
-import com.kama.presentation.R
+import com.kama.core.util.WeatherUtil
+import com.kama.presentation.adapter.MyClosetAlbumAddAdapter
 import com.kama.presentation.databinding.FragmentMyClosetBinding
-import com.kama.presentation.databinding.FragmentRecommendClothesBinding
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
@@ -23,9 +20,11 @@ import timber.log.Timber
  * */
 
 @AndroidEntryPoint
-class MyClosetFragment : BaseFragment<FragmentMyClosetBinding>() {
+class MyClosetFragment : BaseFragment<FragmentMyClosetBinding>(), MyClosetAlbumAddAdapter.OnItemClickListener  {
 
     private val TAG = "MyClosetFragment::"
+
+    private lateinit var adapter: MyClosetAlbumAddAdapter
 
     override fun getFragmentBinding(): FragmentMyClosetBinding =
         FragmentMyClosetBinding.inflate(layoutInflater)
@@ -38,6 +37,13 @@ class MyClosetFragment : BaseFragment<FragmentMyClosetBinding>() {
     private fun init() {
         Timber.i("$TAG::init()")
 
+        binding.rvMyCloset.layoutManager = GridLayoutManager(requireContext(), 3)
+        val initDrawable: MutableList<Uri> = mutableListOf()
+        initDrawable.add(WeatherUtil.getResourceUri(requireContext(), com.kama.design.R.drawable.ic_buttonplus))
+        adapter = MyClosetAlbumAddAdapter(initDrawable) // 리스트에 하나만 추가
+        adapter.setOnItemClickListener(this)
+        binding.rvMyCloset.adapter = adapter
+
         binding.addButton.setOnClickListener {
             openAlbum()
         }
@@ -46,12 +52,7 @@ class MyClosetFragment : BaseFragment<FragmentMyClosetBinding>() {
     private val pickImage = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
             val imageUri = result.data?.data ?: return@registerForActivityResult
-            binding.addButton.setImageURI(imageUri)
-
-            // 이미지뷰의 스케일 타입 설정
-            binding.addButton.scaleType = ImageView.ScaleType.CENTER_CROP
-            // 이미지뷰의 배경색 설정 화이트
-            binding.addButton.setBackgroundColor(resources.getColor(com.kama.design.R.color.white, null))
+            adapter.addItem(imageUri)
         }
     }
 
@@ -60,4 +61,9 @@ class MyClosetFragment : BaseFragment<FragmentMyClosetBinding>() {
         intent.type = "image/*"
         pickImage.launch(intent)
     }
+
+    override fun onItemClick(position: Int) {
+        openAlbum()
+    }
+
 }

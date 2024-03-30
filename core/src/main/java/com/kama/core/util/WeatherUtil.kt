@@ -3,6 +3,7 @@ package com.kama.core.util
 import android.content.Context
 import android.content.SharedPreferences
 import android.net.ConnectivityManager
+import android.net.Uri
 import java.text.SimpleDateFormat
 import java.util.Date
 
@@ -78,6 +79,13 @@ object WeatherUtil {
         val activeNetwork = cm.activeNetworkInfo ?: return false
 
         return activeNetwork.isConnected
+    }
+
+    /**
+     * drawable 리소스를 uri로 변경
+     * */
+    fun getResourceUri(context: Context, resId: Int): Uri {
+        return Uri.parse("android.resource://" + context.packageName + "/" + resId)
     }
 }
 

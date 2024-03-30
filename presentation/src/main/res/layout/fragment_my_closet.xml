@@ -11,5 +11,11 @@
         android:layout_height="300dp"
         android:layout_gravity="center"
         android:scaleType="centerCrop"
+        android:visibility="gone"
         android:contentDescription="TODO" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_my_closet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </FrameLayout>
