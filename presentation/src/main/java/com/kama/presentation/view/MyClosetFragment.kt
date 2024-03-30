@@ -14,7 +14,6 @@ import timber.log.Timber
 
 /**
  * TODO : 내 옷장 만들기 (상의, 하의, 아우터)
- *
  * */
 
 @AndroidEntryPoint
