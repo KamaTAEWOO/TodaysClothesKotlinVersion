@@ -15,6 +15,241 @@ internal class ClothesStyleWoman {
         }
     }
 
+    // 댄디 스타일
+    // String 값이 들어오면 해당 변수의 값을 intArrayOf로 반환
+    fun getDandyStyle(style: String): IntArray {
+        return when (style) {
+            "BAD4" -> BAD4
+            "BAD5" -> BAD5
+            "BAD9" -> BAD9
+            "BAD12" -> BAD12
+            "BAD17" -> BAD17
+            "BAD20" -> BAD20
+            "BAD23" -> BAD23
+            "BAD28" -> BAD28
+            "BBD4" -> BBD4
+            "BBD5" -> BBD5
+            "BBD9" -> BBD9
+            "BBD12" -> BBD12
+            "BBD17" -> BBD17
+            "BBD20" -> BBD20
+            "BBD23" -> BBD23
+            "BBD28" -> BBD28
+            else -> intArrayOf()
+        }
+    }
+
+    // String 값이 들어오면 해당 text의 값을 StringArray로 반환
+    fun getDandyStyleText(style: String): Array<String> {
+        return when (style) {
+            "BAD4" -> txt_BAD4
+            "BAD5" -> txt_BAD5
+            "BAD9" -> txt_BAD9
+            "BAD12" -> txt_BAD12
+            "BAD17" -> txt_BAD17
+            "BAD20" -> txt_BAD20
+            "BAD23" -> txt_BAD23
+            "BAD28" -> txt_BAD28
+            "BBD4" -> txt_BBD4
+            "BBD5" -> txt_BBD5
+            "BBD9" -> txt_BBD9
+            "BBD12" -> txt_BBD12
+            "BBD17" -> txt_BBD17
+            "BBD20" -> txt_BBD20
+            "BBD23" -> txt_BBD23
+            "BBD28" -> txt_BBD28
+            else -> arrayOf()
+        }
+    }
+
+    // 스트릿 스타일
+    // String 값이 들어오면 해당 변수의 값을 intArrayOf로 반환
+    fun getStreetStyle(style: String): IntArray {
+        return when (style) {
+            "BAC4" -> BAC4
+            "BAC5" -> BAC5
+            "BAC9" -> BAC9
+            "BAC12" -> BAC12
+            "BAC17" -> BAC17
+            "BAC20" -> BAC20
+            "BAC23" -> BAC23
+            "BAC28" -> BAC28
+            "BBC4" -> BBC4
+            "BBC5" -> BBC5
+            "BBC9" -> BBC9
+            "BBC12" -> BBC12
+            "BBC17" -> BBC17
+            "BBC20" -> BBC20
+            "BBC23" -> BBC23
+            "BBC28" -> BBC28
+            else -> intArrayOf()
+        }
+    }
+
+    // String 값이 들어오면 해당 text의 값을 StringArray로 반환
+    fun getStreetStyleText(style: String): Array<String> {
+        return when (style) {
+            "BAC4" -> txt_BAC4
+            "BAC5" -> txt_BAC5
+            "BAC9" -> txt_BAC9
+            "BAC12" -> txt_BAC12
+            "BAC17" -> txt_BAC17
+            "BAC20" -> txt_BAC20
+            "BAC23" -> txt_BAC23
+            "BAC28" -> txt_BAC28
+            "BBC4" -> txt_BBC4
+            "BBC5" -> txt_BBC5
+            "BBC9" -> txt_BBC9
+            "BBC12" -> txt_BBC12
+            "BBC17" -> txt_BBC17
+            "BBC20" -> txt_BBC20
+            "BBC23" -> txt_BBC23
+            "BBC28" -> txt_BBC28
+            else -> arrayOf()
+        }
+    }
+
+    // 캐주얼 스타일
+    // String 값이 들어오면 해당 변수의 값을 intArrayOf로 반환
+    fun getCasualStyle(style: String): IntArray {
+        return when (style) {
+            "BAA4" -> BAA4
+            "BAA5" -> BAA5
+            "BAA9" -> BAA9
+            "BAA12" -> BAA12
+            "BAA17" -> BAA17
+            "BAA20" -> BAA20
+            "BAA23" -> BAA23
+            "BAA28" -> BAA28
+            "BBA4" -> BBA4
+            "BBA5" -> BBA5
+            "BBA9" -> BBA9
+            "BBA12" -> BBA12
+            "BBA17" -> BBA17
+            "BBA20" -> BBA20
+            "BBA23" -> BBA23
+            "BBA28" -> BBA28
+            else -> intArrayOf()
+        }
+    }
+
+    // String 값이 들어오면 해당 text의 값을 StringArray로 반환
+    fun getCasualStyleText(style: String): Array<String> {
+        return when (style) {
+            "BAA4" -> txt_BAA4
+            "BAA5" -> txt_BAA5
+            "BAA9" -> txt_BAA9
+            "BAA12" -> txt_BAA12
+            "BAA17" -> txt_BAA17
+            "BAA20" -> txt_BAA20
+            "BAA23" -> txt_BAA23
+            "BAA28" -> txt_BAA28
+            "BBA4" -> txt_BBA4
+            "BBA5" -> txt_BBA5
+            "BBA9" -> txt_BBA9
+            "BBA12" -> txt_BBA12
+            "BBA17" -> txt_BBA17
+            "BBA20" -> txt_BBA20
+            "BBA23" -> txt_BBA23
+            "BBA28" -> txt_BBA28
+            else -> arrayOf()
+        }
+    }
+
+    // 스포티 스타일
+    // String 값이 들어오면 해당 변수의 값을 intArrayOf로 반환
+    fun getSportyStyle(style: String): IntArray {
+        return when (style) {
+            "BAE4" -> BAE4
+            "BAE5" -> BAE5
+            "BAE9" -> BAE9
+            "BAE12" -> BAE12
+            "BAE17" -> BAE17
+            "BAE20" -> BAE20
+            "BAE23" -> BAE23
+            "BAE28" -> BAE28
+            "BBE4" -> BBE4
+            "BBE5" -> BBE5
+            "BBE9" -> BBE9
+            "BBE12" -> BBE12
+            "BBE17" -> BBE17
+            "BBE20" -> BBE20
+            "BBE23" -> BBE23
+            "BBE28" -> BBE28
+            else -> intArrayOf()
+        }
+    }
+
+    // String 값이 들어오면 해당 text의 값을 StringArray로 반환
+    fun getSportyStyleText(style: String): Array<String> {
+        return when (style) {
+            "BAE4" -> txt_BAE4
+            "BAE5" -> txt_BAE5
+            "BAE9" -> txt_BAE9
+            "BAE12" -> txt_BAE12
+            "BAE17" -> txt_BAE17
+            "BAE20" -> txt_BAE20
+            "BAE23" -> txt_BAE23
+            "BAE28" -> txt_BAE28
+            "BBE4" -> txt_BBE4
+            "BBE5" -> txt_BBE5
+            "BBE9" -> txt_BBE9
+            "BBE12" -> txt_BBE12
+            "BBE17" -> txt_BBE17
+            "BBE20" -> txt_BBE20
+            "BBE23" -> txt_BBE23
+            "BBE28" -> txt_BBE28
+            else -> arrayOf()
+        }
+    }
+
+    // 빈티지 스타일
+    // String 값이 들어오면 해당 변수의 값을 intArrayOf로 반환
+    fun getVintageStyle(style: String): IntArray {
+        return when (style) {
+            "BAB4" -> BAB4
+            "BAB5" -> BAB5
+            "BAB9" -> BAB9
+            "BAB12" -> BAB12
+            "BAB17" -> BAB17
+            "BAB20" -> BAB20
+            "BAB23" -> BAB23
+            "BAB28" -> BAB28
+            "BBB4" -> BBB4
+            "BBB5" -> BBB5
+            "BBB9" -> BBB9
+            "BBB12" -> BBB12
+            "BBB17" -> BBB17
+            "BBB20" -> BBB20
+            "BBB23" -> BBB23
+            "BBB28" -> BBB28
+            else -> intArrayOf()
+        }
+    }
+
+    // String 값이 들어오면 해당 text의 값을 StringArray로 반환
+    fun getVintageStyleText(style: String): Array<String> {
+        return when (style) {
+            "BAB4" -> txt_BAB4
+            "BAB5" -> txt_BAB5
+            "BAB9" -> txt_BAB9
+            "BAB12" -> txt_BAB12
+            "BAB17" -> txt_BAB17
+            "BAB20" -> txt_BAB20
+            "BAB23" -> txt_BAB23
+            "BAB28" -> txt_BAB28
+            "BBB4" -> txt_BBB4
+            "BBB5" -> txt_BBB5
+            "BBB9" -> txt_BBB9
+            "BBB12" -> txt_BBB12
+            "BBB17" -> txt_BBB17
+            "BBB20" -> txt_BBB20
+            "BBB23" -> txt_BBB23
+            "BBB28" -> txt_BBB28
+            else -> arrayOf()
+        }
+    }
+
     //4(),5(),9(),12(),17(),20(),23(),28()
     // TODO : 댄디 스타일.
     // TODO : 여자  더위많이탐 댄디 4도
