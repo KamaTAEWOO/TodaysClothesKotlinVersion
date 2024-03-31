@@ -6,22 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".view.MyStyleFragment">
 
-    <ScrollView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_my_closet"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/hello_blank_fragment"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-
-        </FrameLayout>
-    </ScrollView>
+        android:layout_height="match_parent" />
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

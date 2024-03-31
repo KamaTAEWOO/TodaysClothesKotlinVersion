@@ -20,10 +20,9 @@ import timber.log.Timber
  * */
 
 @AndroidEntryPoint
-class MyClosetFragment : BaseFragment<FragmentMyClosetBinding>(), MyClosetAlbumAddAdapter.OnItemClickListener  {
+class MyClosetFragment : BaseFragment<FragmentMyClosetBinding>(), MyClosetAlbumAddAdapter.OnItemClickListener {
 
     private val TAG = "MyClosetFragment::"
-
     private lateinit var adapter: MyClosetAlbumAddAdapter
 
     override fun getFragmentBinding(): FragmentMyClosetBinding =
@@ -43,10 +42,6 @@ class MyClosetFragment : BaseFragment<FragmentMyClosetBinding>(), MyClosetAlbumA
         adapter = MyClosetAlbumAddAdapter(initDrawable) // 리스트에 하나만 추가
         adapter.setOnItemClickListener(this)
         binding.rvMyCloset.adapter = adapter
-
-        binding.addButton.setOnClickListener {
-            openAlbum()
-        }
     }
 
     private val pickImage = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -65,5 +60,4 @@ class MyClosetFragment : BaseFragment<FragmentMyClosetBinding>(), MyClosetAlbumA
     override fun onItemClick(position: Int) {
         openAlbum()
     }
-
 }
