@@ -69,6 +69,6 @@ class MyStyleFragment : BaseFragment<FragmentMyStyleBinding>(), MyStyleAlbumAddA
     }
 
     override fun onItemClick(position: Int) {
-        openAlbum()
+        if(position == 0) openAlbum()
     }
 }

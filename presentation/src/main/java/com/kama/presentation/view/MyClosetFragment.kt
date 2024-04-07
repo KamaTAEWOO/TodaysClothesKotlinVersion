@@ -58,6 +58,6 @@ class MyClosetFragment : BaseFragment<FragmentMyClosetBinding>(), MyClosetAlbumA
     }
 
     override fun onItemClick(position: Int) {
-        openAlbum()
+        if(position == 0) openAlbum()
     }
 }
