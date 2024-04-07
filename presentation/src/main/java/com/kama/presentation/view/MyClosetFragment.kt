@@ -5,10 +5,10 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.GridLayoutManager
 import com.kama.core.base.BaseFragment
+import com.kama.core.util.SharedPreferenceHelper
 import com.kama.core.util.WeatherUtil
 import com.kama.presentation.adapter.MyClosetAlbumAddAdapter
 import com.kama.presentation.databinding.FragmentMyClosetBinding
@@ -24,6 +24,7 @@ class MyClosetFragment : BaseFragment<FragmentMyClosetBinding>(), MyClosetAlbumA
 
     private val TAG = "MyClosetFragment::"
     private lateinit var adapter: MyClosetAlbumAddAdapter
+    private val sharedPreferenceFile = "my_closet_shared_prefs"
 
     override fun getFragmentBinding(): FragmentMyClosetBinding =
         FragmentMyClosetBinding.inflate(layoutInflater)
@@ -39,7 +40,12 @@ class MyClosetFragment : BaseFragment<FragmentMyClosetBinding>(), MyClosetAlbumA
         binding.rvMyCloset.layoutManager = GridLayoutManager(requireContext(), 3)
         val initDrawable: MutableList<Uri> = mutableListOf()
         initDrawable.add(WeatherUtil.getResourceUri(requireContext(), com.kama.design.R.drawable.ic_buttonplus))
-        adapter = MyClosetAlbumAddAdapter(initDrawable) // 리스트에 하나만 추가
+        // 데이터 있을 시 데이터 로드
+        val sharedPreferenceHelper = SharedPreferenceHelper(requireContext(), sharedPreferenceFile)
+        sharedPreferenceHelper.getImageList(sharedPreferenceFile)?.let {
+            initDrawable.addAll(it)
+        }
+        adapter = MyClosetAlbumAddAdapter(requireContext(), sharedPreferenceFile, initDrawable)
         adapter.setOnItemClickListener(this)
         binding.rvMyCloset.adapter = adapter
     }

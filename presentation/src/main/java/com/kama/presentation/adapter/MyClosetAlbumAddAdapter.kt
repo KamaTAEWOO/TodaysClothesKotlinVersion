@@ -1,5 +1,6 @@
 package com.kama.presentation.adapter
 
+import android.content.Context
 import android.graphics.Color
 import android.net.Uri
 import android.view.LayoutInflater
@@ -8,17 +9,21 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.kama.core.util.SharedPreferenceHelper
 import com.kama.presentation.R
 import timber.log.Timber
 
-class MyClosetAlbumAddAdapter(private val albumImageList: MutableList<Uri>) :
-    RecyclerView.Adapter<MyClosetAlbumAddAdapter.ImageButtonViewHolder>() {
+class MyClosetAlbumAddAdapter(
+    private val context: Context,
+    private val sharedPreferenceFile: String,
+    private val albumImageList: MutableList<Uri>
+) : RecyclerView.Adapter<MyClosetAlbumAddAdapter.ImageButtonViewHolder>() {
 
     class ImageButtonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var imageButton: ImageButton = itemView.findViewById(R.id.ib_image_add)
     }
 
-    private val TAG = "ImageButtonAdapter::"
+    private val TAG = "MyClosetFragment::"
     private var listener: OnItemClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageButtonViewHolder {
@@ -41,6 +46,10 @@ class MyClosetAlbumAddAdapter(private val albumImageList: MutableList<Uri>) :
         holder.imageButton.scaleType = ImageView.ScaleType.CENTER_CROP
         // 이미지뷰의 배경색 설정 화이트
         holder.imageButton.setBackgroundColor(Color.WHITE)
+
+        // 데이터 저장
+        val sharedPreferenceHelper = SharedPreferenceHelper(context, sharedPreferenceFile)
+        sharedPreferenceHelper.saveNewImageList(albumImageList, sharedPreferenceFile)
     }
 
     override fun getItemCount() = albumImageList.size

@@ -5,13 +5,11 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.kama.core.base.BaseFragment
 import com.kama.core.util.WeatherUtil
-import com.kama.presentation.adapter.MyClosetAlbumAddAdapter
 import com.kama.presentation.adapter.MyStyleAlbumAddAdapter
 import com.kama.presentation.databinding.FragmentMyStyleBinding
 import com.kama.presentation.viewmodel.MainViewModel
