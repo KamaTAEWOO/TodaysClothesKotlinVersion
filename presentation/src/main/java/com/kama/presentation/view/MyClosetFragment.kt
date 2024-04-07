@@ -19,6 +19,8 @@ import timber.log.Timber
 
 /**
  * TODO : 내 옷장 만들기 (상의, 하의, 아우터)
+ * TODO : 추후에 상의, 하의 아우터 나눌 때 Fragment에서 분리하기
+ * TODO : 1. 상의 Fragment / 2. 하의 Fragment / 3. 아우터 Fragment
  * */
 
 @AndroidEntryPoint
