@@ -1,22 +1,19 @@
 package com.kama.presentation.view
 
-import android.Manifest
 import android.app.Activity
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.kama.core.base.BaseFragment
 import com.kama.core.util.SharedPreferenceHelper
 import com.kama.core.util.WeatherUtil
-import com.kama.presentation.adapter.MyClosetAlbumAddAdapter
+import com.kama.presentation.adapter.AlbumAddAdapter
 import com.kama.presentation.databinding.FragmentMyClosetBinding
+import com.kama.presentation.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
@@ -25,19 +22,27 @@ import timber.log.Timber
  * */
 
 @AndroidEntryPoint
-class MyClosetFragment : BaseFragment<FragmentMyClosetBinding>(), MyClosetAlbumAddAdapter.OnItemClickListener {
+class MyClosetFragment : BaseFragment<FragmentMyClosetBinding>(), AlbumAddAdapter.OnItemClickListener {
 
     private val TAG = "MyClosetFragment::"
 
-    private lateinit var adapter: MyClosetAlbumAddAdapter
+    private lateinit var adapter: AlbumAddAdapter
     private val sharedPreferenceFile = "my_closet_shared_prefs"
+    private lateinit var mainViewModel: MainViewModel
 
     override fun getFragmentBinding(): FragmentMyClosetBinding =
         FragmentMyClosetBinding.inflate(layoutInflater)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        initViewModel()
         init()
+    }
+
+    private fun initViewModel() {
+        Timber.i("$TAG::initViewModel()")
+        mainViewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
     }
 
     private fun init() {
@@ -49,7 +54,7 @@ class MyClosetFragment : BaseFragment<FragmentMyClosetBinding>(), MyClosetAlbumA
      * TODO : 이미지 로드 시 현재 없는 이미지나 흰색 이미지로 뜨는 경우 자동 삭제 처리
      * */
     private fun imageLoadInit() {
-        binding.rvMyCloset.layoutManager = GridLayoutManager(requireContext(), 3)
+        binding.rvMyAlbums.layoutManager = GridLayoutManager(requireContext(), 3)
         val initDrawable: MutableList<Uri> = mutableListOf()
         initDrawable.add(WeatherUtil.getResourceUri(requireContext(), com.kama.design.R.drawable.ic_buttonplus))
         // 데이터 있을 시 데이터 로드
@@ -65,9 +70,9 @@ class MyClosetFragment : BaseFragment<FragmentMyClosetBinding>(), MyClosetAlbumA
                 iterator.remove()
             }
         }
-        adapter = MyClosetAlbumAddAdapter(requireContext(), sharedPreferenceFile, initDrawable)
+        adapter = AlbumAddAdapter(requireContext(), sharedPreferenceFile, initDrawable)
         adapter.setOnItemClickListener(this)
-        binding.rvMyCloset.adapter = adapter
+        binding.rvMyAlbums.adapter = adapter
     }
 
     private val pickImage = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->

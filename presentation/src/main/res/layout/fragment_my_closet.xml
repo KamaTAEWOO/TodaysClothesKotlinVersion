@@ -6,7 +6,7 @@
     tools:context=".view.MyClosetFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_my_closet"
+        android:id="@+id/rv_my_albums"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </FrameLayout>
