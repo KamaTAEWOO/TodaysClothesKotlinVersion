@@ -2,9 +2,12 @@ package com.kama.core.util
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.graphics.BitmapFactory
 import android.net.Uri
+import android.provider.MediaStore
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import java.io.File
 import java.lang.reflect.Type;
 
 class SharedPreferenceHelper(
@@ -43,6 +46,22 @@ class SharedPreferenceHelper(
             gson.fromJson<List<String>>(json, type).map { Uri.parse(it) } // String을 URI로 변환하여 반환
         } else {
             ArrayList()
+        }
+    }
+
+    fun isImageLoadable(uri: Uri): Boolean {
+        return try {
+            // 이미지를 로드하여 에러가 발생하지 않으면 로드 가능한 이미지로 판단
+            val inputStream = context.contentResolver?.openInputStream(uri)
+            val options = BitmapFactory.Options().apply {
+                inJustDecodeBounds = true
+            }
+            BitmapFactory.decodeStream(inputStream, null, options)
+            inputStream?.close()
+            options.outWidth > 0 && options.outHeight > 0
+        } catch (e: Exception) {
+            // 이미지 로드 중 에러가 발생하면 로드할 수 없는 이미지로 판단
+            false
         }
     }
 }
