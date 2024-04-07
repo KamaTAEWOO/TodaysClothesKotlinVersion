@@ -54,7 +54,7 @@ class MyStyleAlbumAddAdapter(private val albumImageList: MutableList<Uri>) :
     }
 
     fun addItem(imageResource: Uri) {
-        albumImageList.add(0, imageResource) // 맨 앞에 아이템 추가
-        notifyItemInserted(0)
+        albumImageList.add(1, imageResource) // 맨 앞에 아이템 추가
+        notifyItemInserted(1)
     }
 }
