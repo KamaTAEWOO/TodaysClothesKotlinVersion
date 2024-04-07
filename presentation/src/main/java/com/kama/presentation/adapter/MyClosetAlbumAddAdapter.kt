@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.kama.core.util.SharedPreferenceHelper
 import com.kama.presentation.R
 import timber.log.Timber
@@ -42,7 +43,10 @@ class MyClosetAlbumAddAdapter(
             listener?.onItemClick(position)
         }
 
-        holder.imageButton.setImageURI(currentItem)
+        // TODO: Glide 로드 시 캐시 삭제 처리 추후에 해주기
+        Glide.with(context)
+            .load(currentItem)
+            .into(holder.imageButton)
 
         // 이미지뷰의 스케일 타입 설정
         holder.imageButton.scaleType = ImageView.ScaleType.CENTER_CROP
