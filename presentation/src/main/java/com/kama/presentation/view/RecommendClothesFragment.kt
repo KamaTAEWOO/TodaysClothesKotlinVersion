@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.kama.core.base.BaseFragment
 import com.kama.core.util.WeatherUtil
 import com.kama.presentation.clothes.ClothesStyleMan
@@ -12,7 +13,6 @@ import com.kama.presentation.databinding.FragmentRecommendClothesBinding
 import com.kama.presentation.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
-import java.util.Arrays
 
 /**
  * TODO : 온도에 따른 옷을 어떻게 추천해줄건가?
@@ -96,7 +96,7 @@ class RecommendClothesFragment : BaseFragment<FragmentRecommendClothesBinding>()
     }
 
     private fun highRecommendClothesCheck(temp: Int) {
-        Timber.i("$TAG::highRecommendClothesShow() lowTemp : $temp")
+        Timber.i("$TAG::highRecommendClothesShow() highTemp : $temp")
         val myStyle = surveyTypeStyleData(temp)
         val myStyleImg = surveyTypeStyleImg(myStyle)
         val myStyleText = surveyTypeStyleText(myStyle)
@@ -196,20 +196,66 @@ class RecommendClothesFragment : BaseFragment<FragmentRecommendClothesBinding>()
 
     // 최종 추천 옷 보여주는 함수 - 최고 기온
     private fun recommendClotheHighTempShow(styleImg: IntArray, myStyleText: Array<String>) {
-        Timber.i("$TAG::recommendClotheHighTempShow() ${Arrays.toString(styleImg)} / ${Arrays.toString(myStyleText)} ")
+        Timber.i("$TAG::recommendClotheHighTempShow() ${styleImg.contentToString()} / ${myStyleText.contentToString()} ")
 
-        // 아우터 - 최고 온도 : 3개, 최저 온도 : 3개
-        // 상의 - 최고 온도 : 3개, 최저 온도 : 3개
-        // 하의 - 최고 온도 : 3개, 최저 온도 : 3개
+        // 아우터 - 최고 온도 : 3개
+        // 상의 - 최고 온도 : 3개
+        // 하의 - 최고 온도 : 3개
+
+        val highTempClothesImage = arrayOf(
+            binding.ivTopHighTempFirst, binding.ivTopHighTempSecond, binding.ivTopHighTempThird,
+            binding.ivOuterHighTempFirst, binding.ivOuterHighTempSecond, binding.ivOuterHighTempThird,
+            binding.ivBottomHighTempFirst, binding.ivBottomHighTempSecond, binding.ivBottomHighTempThird
+        )
+
+        val highTempClothesText = arrayOf(
+            binding.tvTopHighTempFirst, binding.tvTopHighTempSecond, binding.tvTopHighTempThird,
+            binding.tvOuterHighTempFirst, binding.tvOuterHighTempSecond, binding.tvOuterHighTempThird,
+            binding.tvBottomHighTempFirst, binding.tvBottomHighTempSecond, binding.tvBottomHighTempThird
+        )
+
+        for(i in highTempClothesImage.indices) {
+            Glide.with(this)
+                .load(styleImg[i])
+                .into(highTempClothesImage[i])
+            highTempClothesText[i].text = myStyleText[i]
+            if(myStyleText[i].isEmpty()) {
+                highTempClothesImage[i].visibility = View.GONE
+                highTempClothesText[i].visibility = View.GONE
+            }
+        }
     }
 
     // 최종 추천 옷 보여주는 함수 - 최저 기온
     private fun recommendClotheLowTempShow(styleImg: IntArray, myStyleText: Array<String>) {
-        Timber.i("$TAG::recommendClotheLowTempShow() ${Arrays.toString(styleImg)} / ${Arrays.toString(myStyleText)} ")
+        Timber.i("$TAG::recommendClotheLowTempShow() ${styleImg.contentToString()} / ${myStyleText.contentToString()} ")
 
-        // 아우터 - 최고 온도 : 3개, 최저 온도 : 3개
-        // 상의 - 최고 온도 : 3개, 최저 온도 : 3개
-        // 하의 - 최고 온도 : 3개, 최저 온도 : 3개
+        // 아우터 - 최고 온도 : 3개
+        // 상의 - 최고 온도 : 3개
+        // 하의 - 최고 온도 : 3개
+
+        val lowTempClothesImage = arrayOf(
+            binding.ivTopLowTempFirst, binding.ivTopLowTempSecond, binding.ivTopLowTempThird,
+            binding.ivOuterLowTempFirst, binding.ivOuterLowTempSecond, binding.ivOuterLowTempThird,
+            binding.ivBottomLowTempFirst, binding.ivBottomLowTempSecond, binding.ivBottomLowTempThird
+        )
+
+        val lowTempClothesText = arrayOf(
+            binding.tvTopLowTempFirst, binding.tvTopLowTempSecond, binding.tvTopLowTempThird,
+            binding.tvOuterLowTempFirst, binding.tvOuterLowTempSecond, binding.tvOuterLowTempThird,
+            binding.tvBottomLowTempFirst, binding.tvBottomLowTempSecond, binding.tvBottomLowTempThird
+        )
+
+        for(i in lowTempClothesImage.indices) {
+            Glide.with(this)
+                .load(styleImg[i])
+                .into(lowTempClothesImage[i])
+            lowTempClothesText[i].text = myStyleText[i]
+            if(myStyleText[i].isEmpty()) {
+                lowTempClothesImage[i].visibility = View.GONE
+                lowTempClothesText[i].visibility = View.GONE
+            }
+        }
     }
 
     private fun swipeRefresh() {

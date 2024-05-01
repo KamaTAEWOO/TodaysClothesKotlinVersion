@@ -30,4 +30,11 @@
     <string name="survey_style_sporty">스포티 스타일</string>
     <string name="survey_confirm">확인</string>
     <string name="survey_cancel">취소</string>
+
+    <!--    Recommend_Clothes-->
+    <string name="high_temp">최고온도</string>
+    <string name="low_temp">최저온도</string>
+    <string name="outer">아우터</string>
+    <string name="top">상의</string>
+    <string name="bottom">하의</string>
 </resources>
