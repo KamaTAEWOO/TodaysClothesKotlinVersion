@@ -47,9 +47,10 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
             Timber.d("$TAG::result.observe() $resultData")
             if (resultData) {
                 mainViewModel.weatherData.forEach {
-                    if (it.baseDate == it.fcstDate) {
+                    //if (it.baseDate == it.fcstDate) {
+                        data += "${it.fcstDate} -> ${it.fcstTime} \n"
                         data += "${it.category} -> ${it.fcstValue} \n"
-                    }
+                    //}
                 }
                 binding.textView.text = data
             } else {
