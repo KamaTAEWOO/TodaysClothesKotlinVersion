@@ -20,8 +20,8 @@ object WeatherUtil {
     const val DATA_TYPE = "JSON"
     var BASE_DATE = "20240302"
     const val BASE_TIME = "0500"
-    const val NX = "55"
-    const val NY = "127"
+    var NX = "55"
+    var NY = "127"
 
     /**
      ** 금일 날짜

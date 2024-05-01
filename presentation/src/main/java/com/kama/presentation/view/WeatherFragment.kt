@@ -1,5 +1,6 @@
 package com.kama.presentation.view
 
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -74,5 +75,4 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
             binding.swipeRefreshLayout.isRefreshing = false // 새로고침 완료
         }
     }
-
 }
