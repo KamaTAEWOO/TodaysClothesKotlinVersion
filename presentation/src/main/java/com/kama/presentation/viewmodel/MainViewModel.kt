@@ -24,6 +24,10 @@ class MainViewModel @Inject constructor(
     private val _result: MutableLiveData<Boolean> = MutableLiveData(false)
     var result: LiveData<Boolean> = _result
 
+    // 날씨 데이터를 fcstTime을 기준으로 그룹화하기 위한 맵
+    private val _weatherDataMap: MutableMap<String, List<WeatherDataEntity>> = mutableMapOf()
+    val weatherDataMap: Map<String, List<WeatherDataEntity>> = _weatherDataMap
+
     private var weatherFcstValue = ""
 
     fun requestWeatherData(
@@ -44,23 +48,27 @@ class MainViewModel @Inject constructor(
         ny
     )
         .onEach {
-            //Timber.d("$TAG requestWeatherData() $it")
+            // 기존 로직에서 그룹화된 데이터를 _weatherDataMap에 저장하도록 수정
             for (i in it.response.body.items.item.indices) {
-                weatherFcstValue = it.response.body.items.item[i].fcstValue
-
-                _weatherData.add(
-                    WeatherDataEntity(
-                        it.response.body.items.item[i].baseDate,
-                        it.response.body.items.item[i].baseTime,
-                        weatherShape(it.response.body.items.item[i].category) ?: "",
-                        it.response.body.items.item[i].fcstDate,
-                        it.response.body.items.item[i].fcstTime,
-                        weatherFcstValue,
-                        it.response.body.items.item[i].nx,
-                        it.response.body.items.item[i].ny
-                    )
+                val weatherData = WeatherDataEntity(
+                    it.response.body.items.item[i].baseDate,
+                    it.response.body.items.item[i].baseTime,
+                    weatherShape(it.response.body.items.item[i].category) ?: "",
+                    it.response.body.items.item[i].fcstDate,
+                    it.response.body.items.item[i].fcstTime,
+                    it.response.body.items.item[i].fcstValue,
+                    it.response.body.items.item[i].nx,
+                    it.response.body.items.item[i].ny
                 )
-                Timber.d("$TAG::requestWeatherData() ${_weatherData[i]}")
+
+                // fcstTime을 key로 사용하여 그룹화
+                val fcstTime = it.response.body.items.item[i].fcstTime
+                if (!_weatherDataMap.containsKey(fcstTime)) {
+                    _weatherDataMap[fcstTime] = mutableListOf()
+                }
+                (_weatherDataMap[fcstTime] as MutableList<WeatherDataEntity>).add(weatherData)
+
+                //Timber.d("$TAG::requestWeatherData() ${_weatherData[i]}")
             }
             _result.value = true
         }
