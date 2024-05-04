@@ -52,10 +52,13 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
         mainViewModel.result.observe(viewLifecycleOwner) { resultData ->
             Timber.d("$TAG::result.observe() $resultData")
             if (resultData) {
-                mainViewModel.weatherDataMap.forEach { (key, value) ->
-                    // 모든 데이터 보기
-                    data += "$key -> $value \n"
-                    data += "-----------------------------------\n"
+                mainViewModel.weatherDataMap.forEach { (key, valueList) ->
+                    data += "$key\n"
+                    valueList.forEach { value ->
+                        if(value.category == "아침 최저기온") {
+                            data += "${value.category} : ${value.fcstValue}\n"
+                        }
+                    }
                 }
                 binding.textView.text = data
             } else {
