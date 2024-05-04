@@ -1,5 +1,6 @@
 package com.kama.core.network.di
 
+import com.google.gson.GsonBuilder
 import com.kama.core.BuildConfig
 import dagger.Module
 import dagger.Provides
@@ -23,13 +24,27 @@ object RetrofitModule {
     fun provideRetrofit(
         okHttpClient: OkHttpClient
     ): Retrofit {
+        val gson = GsonBuilder().setLenient().create()
+
         return Retrofit.Builder()
-            .addConverterFactory(nullOnEmptyConverterFactory)
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .baseUrl(BuildConfig.BASE_URL)
             .client(okHttpClient)
-            .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
+
+//    @Provides
+//    @Singleton
+//    fun provideRetrofit(
+//        okHttpClient: OkHttpClient
+//    ): Retrofit {
+//        return Retrofit.Builder()
+//            .addConverterFactory(nullOnEmptyConverterFactory)
+//            .baseUrl(BuildConfig.BASE_URL)
+//            .client(okHttpClient)
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .build()
+//    }
 
     /** 비어있는(length=0)인 Response를 받았을 경우 처리 */
     private val nullOnEmptyConverterFactory = object : Converter.Factory() {
