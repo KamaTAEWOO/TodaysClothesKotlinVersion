@@ -23,12 +23,12 @@ class MainViewModel @Inject constructor(
     val weatherData = _weatherData
     private val _result: MutableLiveData<Boolean> = MutableLiveData(false)
     var result: LiveData<Boolean> = _result
+    private var weatherFcstValue: String = ""
 
-    // 날씨 데이터를 fcstTime을 기준으로 그룹화하기 위한 맵
-    private val _weatherDataMap: MutableMap<String, List<WeatherDataEntity>> = mutableMapOf()
-    val weatherDataMap: Map<String, List<WeatherDataEntity>> = _weatherDataMap
-
-    private var weatherFcstValue = ""
+    // 기온 저장 변수
+    var currentTemp: MutableMap<String, String> = mutableMapOf()
+    var minTemp: String = ""
+    var maxTemp: String = ""
 
     fun requestWeatherData(
         pageNo: Int,
@@ -61,13 +61,7 @@ class MainViewModel @Inject constructor(
                     it.response.body.items.item[i].ny
                 )
 
-                // fcstTime을 key로 사용하여 그룹화
-                val fcstTime = it.response.body.items.item[i].fcstTime
-                if (!_weatherDataMap.containsKey(fcstTime)) {
-                    _weatherDataMap[fcstTime] = mutableListOf()
-                }
-                (_weatherDataMap[fcstTime] as MutableList<WeatherDataEntity>).add(weatherData)
-
+                _weatherData.add(weatherData)
                 //Timber.d("$TAG::requestWeatherData() ${_weatherData[i]}")
             }
             _result.value = true

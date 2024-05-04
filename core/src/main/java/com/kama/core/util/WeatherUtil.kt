@@ -87,6 +87,14 @@ object WeatherUtil {
     fun getResourceUri(context: Context, resId: Int): Uri {
         return Uri.parse("android.resource://" + context.packageName + "/" + resId)
     }
+
+    /**
+     * 데이터 분리 A;B -> Pair(A, B)
+     * */
+    private fun dataSplit(data: String): Pair<String, String> {
+        val splitData = data.split(";")
+        return Pair(splitData[0], splitData[1])
+    }
 }
 
 
