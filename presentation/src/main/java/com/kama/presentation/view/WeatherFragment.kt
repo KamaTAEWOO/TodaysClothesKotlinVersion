@@ -1,6 +1,5 @@
 package com.kama.presentation.view
 
-import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -26,12 +25,18 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         initViewModel()
+        initAppBar()
         init()
     }
 
     private fun initViewModel() {
         Timber.i("$TAG::initViewModel()")
         mainViewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
+    }
+
+    private fun initAppBar() {
+        Timber.i("$TAG::initAppBar()")
+        binding.layoutAppbar.tvTitle.text = getString(R.string.weather_title)
     }
 
     private fun init() {

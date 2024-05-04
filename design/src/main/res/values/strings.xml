@@ -37,4 +37,7 @@
     <string name="outer">아우터</string>
     <string name="top">상의</string>
     <string name="bottom">하의</string>
+
+    <!--    Weather Fragment-->
+    <string name="weather_title">날씨</string>
 </resources>
