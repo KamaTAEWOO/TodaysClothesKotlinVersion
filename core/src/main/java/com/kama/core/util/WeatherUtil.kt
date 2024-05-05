@@ -5,6 +5,8 @@ import android.content.SharedPreferences
 import android.net.ConnectivityManager
 import android.net.Uri
 import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.Date
 
 object WeatherUtil {
@@ -91,9 +93,18 @@ object WeatherUtil {
     /**
      * 데이터 분리 A;B -> Pair(A, B)
      * */
-    private fun dataSplit(data: String): Pair<String, String> {
+    fun dataSplit(data: String): Pair<String, String> {
         val splitData = data.split(";")
         return Pair(splitData[0], splitData[1])
+    }
+
+    /**
+     * 날짜와 시간을 합쳐서 반환 2024-03-02 05:00 -> 20240302;0500
+     * */
+    fun getCurrentDateTime(): String {
+        val currentDateTime = LocalDateTime.now()
+        val formatter = DateTimeFormatter.ofPattern("yyyyMMdd;HHmm")
+        return currentDateTime.format(formatter)
     }
 }
 

@@ -23,7 +23,6 @@ class MainViewModel @Inject constructor(
     val weatherData = _weatherData
     private val _result: MutableLiveData<Boolean> = MutableLiveData(false)
     var result: LiveData<Boolean> = _result
-    private var weatherFcstValue: String = ""
 
     // 기온 저장 변수
     var currentTemp: MutableMap<String, String> = mutableMapOf()
@@ -91,59 +90,7 @@ class MainViewModel @Inject constructor(
             "PCP" -> "1시간 강수량"
             else -> ""
         }
-        if (data == "하늘상태")
-            weatherFcstValue = skyState(weatherFcstValue) ?: ""
-        else if (data == "강수형태")
-            weatherFcstValue = precipitation(weatherFcstValue) ?: ""
         //Timber.d("$TAG::weatherShape() $shape, weatherFcstValue: $weatherFcstValue")
         return data
-    }
-
-    // 하늘 상태
-    private fun skyState(skyData: String): String? {
-        when (skyData) {
-            "1" -> return "맑음"
-            "3" -> return "구름맑음"
-            "4" -> return "흐림"
-        }
-        //Timber.d("$TAG::skyState() $skyData")
-        return skyData
-    }
-
-    // 강수 형태
-    private fun precipitation(rainData: String): String? {
-        when (rainData) {
-            "0" -> return "없음"
-            "1" -> return "비"
-            "2" -> return "비/눈"
-            "3" -> return "눈"
-            "4" -> return "소나기"
-            "5" -> return "빗방물"
-            "6" -> return "진눈개비"
-            "7" -> return "눈날림"
-        }
-        //Timber.d("$TAG::precipitation() $rainData")
-        return rainData
-    }
-
-    // 현재시간에 따른 측정시간 값
-    fun timeChange(time: String?): String? {
-        // 현재 시간에 따라 데이터 시간 설정(3시간 마다 업데이트) //
-        /**
-         * 시간은 3시간 단위로 조회해야 한다. 안그러면 정보가 없다고 뜬다.
-         * 0200, 0500, 0800 ~ 2300까지
-         * 그래서 시간을 입력했을때 switch문으로 조회 가능한 시간대로 변경해주었다.
-         */
-        val time = when (time) {
-            "0200", "0300", "0400" -> "0200"
-            "0500", "0600", "0700" -> "0500"
-            "0800", "0900", "1000" -> "0800"
-            "1100", "1200", "1300" -> "1100"
-            "1400", "1500", "1600" -> "1400"
-            "1700", "1800", "1900" -> "1700"
-            "2000", "2100", "2200" -> "2000"
-            else -> "2300"
-        }
-        return time
     }
 }
