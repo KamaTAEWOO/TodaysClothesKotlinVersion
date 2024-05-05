@@ -43,7 +43,7 @@
     <string name="current_location">현재 나의 위치</string>
     <string name="current_temp">0℃</string>
     <string name="current_rain">강수량\t</string>
-    <string name="current_humidity">습도\t\t</string>
+    <string name="current_humidity">습도\t\t\t\t</string>
     <string name="current_wind">풍향\t</string>
     <string name="current_wind_speed">풍속\t</string>
 </resources>

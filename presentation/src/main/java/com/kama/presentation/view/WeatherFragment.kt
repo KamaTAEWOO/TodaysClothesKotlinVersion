@@ -42,6 +42,7 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
 
     private fun init() {
         Timber.i("$TAG::init()")
+        binding.tvLocation.text = MainViewActivity.myLocation
         weatherDataReceive()
         swipeRefresh()
     }
@@ -70,6 +71,8 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
         val humidity: MutableMap<String, String> = mutableMapOf()
         // 풍향
         val windDirection: MutableMap<String, String> = mutableMapOf()
+        // 강수형태
+        val rainType: MutableMap<String, String> = mutableMapOf()
 
         weatherData.forEach {
             val key = "${it.fcstDate};${it.fcstTime}"
@@ -84,6 +87,7 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
                 "하늘상태" -> weatherShape[key] = value
                 "습도" -> humidity[key] = value
                 "풍향" -> windDirection[key] = value
+                "강수형태" -> rainType[key] = value
             }
         }
 
@@ -92,7 +96,7 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
         // 바람세기 - 풍속
         windStrength(windStrength)
         // 날씨 형태 - 하늘상태
-        weatherShape(weatherShape)
+        weatherShape(weatherShape, rainType)
         // 내일 날씨 예보 - 1시간 기온
         tomorrowWeatherForecast()
         // 습도
@@ -134,15 +138,24 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
     }
 
     // 날씨 형태 - 하늘상태
-    private fun weatherShape(data: MutableMap<String, String>) {
+    private fun weatherShape(data: MutableMap<String, String>, rainType: MutableMap<String, String>) {
         val currentParsingDate = currentParsingDate()
+        // TODO : 맑음: ic_sun, 구름맑음: ic_cloudy, 흐림: ic_cloud
+        // TODO : 눈: ic_snowy, 비: ic_rainy
 
         // 하늘상태
         data.forEach { (key, value) ->
             Timber.i("$TAG::weatherShape() $key, $value")
             if (key == currentParsingDate) {
-                //binding.tvWeatherShape.text = value
                 // 이미지 변경함.
+                binding.ivWeather.setImageResource(
+                    when (skyState(value)) {
+                        "맑음" -> R.drawable.ic_sun
+                        "구름맑음" -> R.drawable.ic_cloudy
+                        "흐림" -> rainType(rainType)
+                        else -> {}
+                    } as Int
+                )
             }
         }
     }
@@ -156,6 +169,29 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
         }
         //Timber.d("$TAG::skyState() $skyData")
         return skyData
+    }
+
+    // 강수형태
+    private fun rainType(data: MutableMap<String, String>): Int {
+        val currentParsingDate = currentParsingDate()
+
+        data.forEach { (key, value) ->
+            Timber.i("$TAG::rainType() $key, $value")
+            if (key == currentParsingDate) {
+                return when (value) {
+                    "0" -> R.drawable.ic_cloud
+                    "1" -> R.drawable.ic_rainy
+                    "2" -> R.drawable.ic_rainy
+                    "3" -> R.drawable.ic_snowy
+                    "4" -> R.drawable.ic_rainy
+                    "5" -> R.drawable.ic_rainy
+                    "6" -> R.drawable.ic_rainy
+                    "7" -> R.drawable.ic_snowy
+                    else -> {0}
+                }
+            }
+        }
+        return 0
     }
 
     // 내일 날씨 예보 - 1시간 기온 - viewmodel에 저장된 변수 사용

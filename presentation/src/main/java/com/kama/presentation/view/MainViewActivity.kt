@@ -118,10 +118,11 @@ class MainViewActivity : BaseActivity<ActivityMainViewBinding>() {
         Timber.d("$TAG::getLastLocation() latitude: $latitude, longitude: $longitude")
 
         val address = gpsTracker.getCurrentAddress(latitude, longitude)
-        Timber.d("$TAG::getLastLocation() address: $address" + "address[3]:" + address.dropLast(3))
+        Timber.d("$TAG::getLastLocation() address: $address")
 
         // 현재 주소의 nx와 ny를 csv에서 찾기
         val addressData = address.split(" ").toTypedArray()
+        myLocation = addressData[1] + " " + addressData[2] + " " + addressData[3]
         val dong = addressData[3].dropLast(1)
         for (data in CSVParser.data) {
             if (data.address1 == addressData[1]
@@ -149,5 +150,9 @@ class MainViewActivity : BaseActivity<ActivityMainViewBinding>() {
     override fun onDestroy() {
         super.onDestroy()
         // Clean up resources
+    }
+
+    companion object {
+        var myLocation = "My Location"
     }
 }

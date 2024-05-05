@@ -20,8 +20,8 @@
     <!--    현재 나의 위치-->
     <ImageView
         android:id="@+id/iv_location"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:src="@drawable/ic_location"
@@ -30,7 +30,7 @@
 
     <TextView
         android:id="@+id/tv_location"
-        style="@style/nanumsquare_extrabold_25"
+        style="@style/nanumsquare_extrabold_20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -73,8 +73,6 @@
                         android:layout_width="150dp"
                         android:layout_height="110dp"
                         android:layout_marginTop="10dp"
-                        android:background="@drawable/ic_weather"
-                        android:backgroundTint="@color/main_color"
                         android:contentDescription="날씨 형태"
                         app:layout_constraintEnd_toStartOf="@id/tv_current_temp_value"
                         app:layout_constraintHorizontal_chainStyle="spread_inside"
@@ -138,6 +136,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:weightSum="4"
+                        android:layout_marginStart="20dp"
                         app:layout_constraintBottom_toBottomOf="@id/ll_table1"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/ll_table1"
@@ -237,6 +236,8 @@
                     </LinearLayout>
 
                     <!--                   3시간 마다 날씨-->
+
+
 
                     <!--                   내일 날씨-->
 
