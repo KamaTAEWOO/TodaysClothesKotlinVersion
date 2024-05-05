@@ -17,16 +17,41 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--    현재 나의 위치-->
+    <ImageView
+        android:id="@+id/iv_location"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/ic_location"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_appbar" />
+
+    <TextView
+        android:id="@+id/tv_location"
+        style="@style/nanumsquare_extrabold_25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/current_location"
+        android:textColor="@color/main_color"
+        app:layout_constraintBottom_toBottomOf="@id/iv_location"
+        app:layout_constraintStart_toEndOf="@id/iv_location"
+        app:layout_constraintTop_toTopOf="@id/iv_location" />
+
     <!-- Scrollable content below app bar -->
     <FrameLayout
         android:id="@+id/layout_content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="110dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layout_appbar">
+        app:layout_constraintTop_toBottomOf="@id/tv_location">
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipeRefreshLayout"
@@ -38,14 +63,185 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/textView"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/hello_blank_fragment"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:layout_height="0dp"
+                    android:layout_marginHorizontal="20dp">
+                    <!--                   날씨 형태-->
+                    <ImageView
+                        android:id="@+id/iv_weather"
+                        android:layout_width="150dp"
+                        android:layout_height="110dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/ic_weather"
+                        android:backgroundTint="@color/main_color"
+                        android:contentDescription="날씨 형태"
+                        app:layout_constraintEnd_toStartOf="@id/tv_current_temp_value"
+                        app:layout_constraintHorizontal_chainStyle="spread_inside"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
+                    <!--                   현재 날씨-->
+                    <TextView
+                        android:id="@+id/tv_current_temp_value"
+                        style="@style/nanumsquare_extrabold_75"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/current_temp"
+                        android:textColor="@color/black"
+                        app:layout_constraintBottom_toBottomOf="@id/iv_weather"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/iv_weather"
+                        app:layout_constraintTop_toTopOf="@id/iv_weather" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_table1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal"
+                        android:weightSum="4"
+                        app:layout_constraintEnd_toStartOf="@id/ll_table2"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_current_temp_value">
+
+                        <!--                   강수량-->
+                        <TextView
+                            android:id="@+id/tv_rain"
+                            style="@style/nanumsquare_bold_20"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:text="@string/current_rain"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/tv_rain_value"
+                            style="@style/nanumsquare_bold_20"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:text="@string/current_temp"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_table2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="4"
+                        app:layout_constraintBottom_toBottomOf="@id/ll_table1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/ll_table1"
+                        app:layout_constraintTop_toTopOf="@id/ll_table1">
+
+                        <!--                   바람 세기-->
+                        <TextView
+                            android:id="@+id/tv_wind"
+                            style="@style/nanumsquare_bold_20"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:text="@string/current_wind_speed"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/tv_wind_value"
+                            style="@style/nanumsquare_bold_20"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:text="@string/current_temp"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_table3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal"
+                        android:weightSum="4"
+                        app:layout_constraintStart_toStartOf="@id/ll_table1"
+                        app:layout_constraintTop_toBottomOf="@id/ll_table1">
+
+                        <!--                   습도-->
+                        <TextView
+                            android:id="@+id/tv_humidity"
+                            style="@style/nanumsquare_bold_20"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:text="@string/current_humidity"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/tv_humidity_value"
+                            style="@style/nanumsquare_bold_20"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:text="@string/current_temp"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_table4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="4"
+                        app:layout_constraintBottom_toBottomOf="@id/ll_table3"
+                        app:layout_constraintStart_toStartOf="@id/ll_table2"
+                        app:layout_constraintTop_toTopOf="@id/ll_table3">
+
+                        <!--                   풍향-->
+                        <TextView
+                            android:id="@+id/tv_wind_direction"
+                            style="@style/nanumsquare_bold_20"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="1"
+                            android:text="@string/current_wind"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/tv_wind_direction_value"
+                            style="@style/nanumsquare_bold_20"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:text="@string/current_temp"
+                            android:textColor="@color/black" />
+
+                    </LinearLayout>
+
+                    <!--                   3시간 마다 날씨-->
+
+                    <!--                   내일 날씨-->
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </ScrollView>
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

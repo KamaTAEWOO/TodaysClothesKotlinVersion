@@ -18,7 +18,6 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
 
     private val TAG = "WeatherFragment::"
     private lateinit var mainViewModel: MainViewModel
-    private var test = ""
 
     override fun getFragmentBinding(): FragmentWeatherBinding =
         FragmentWeatherBinding.inflate(layoutInflater)
@@ -67,6 +66,10 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
         val windStrength: MutableMap<String, String> = mutableMapOf()
         // 날씨 형태 - 하늘상태
         val weatherShape: MutableMap<String, String> = mutableMapOf()
+        // 습도
+        val humidity: MutableMap<String, String> = mutableMapOf()
+        // 풍향
+        val windDirection: MutableMap<String, String> = mutableMapOf()
 
         weatherData.forEach {
             val key = "${it.fcstDate};${it.fcstTime}"
@@ -79,6 +82,8 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
                 "강수확률" -> rainAmount[key] = value
                 "풍속" -> windStrength[key] = value
                 "하늘상태" -> weatherShape[key] = value
+                "습도" -> humidity[key] = value
+                "풍향" -> windDirection[key] = value
             }
         }
 
@@ -90,6 +95,10 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
         weatherShape(weatherShape)
         // 내일 날씨 예보 - 1시간 기온
         tomorrowWeatherForecast()
+        // 습도
+        humidity(humidity)
+        // 풍향
+        windDirection(windDirection)
     }
 
     private fun currentParsingDate(): String {
@@ -106,9 +115,7 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
         data.forEach { (key, value) ->
             Timber.i("$TAG::rainAmount() $key, $value")
             if (key == currentParsingDate) {
-                //binding.tvRainAmount.text = value
-                test += "강수확률 - $currentParsingDate, $value\n"
-                binding.textView.text = test
+                binding.tvRainValue.text = value
             }
         }
     }
@@ -121,9 +128,7 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
         data.forEach { (key, value) ->
             Timber.i("$TAG::windStrength() $key, $value")
             if (key == currentParsingDate) {
-                //binding.tvWindStrength.text = value
-                test += "품속세기 - $currentParsingDate, $value\n"
-                binding.textView.text = test
+                binding.tvWindValue.text = value
             }
         }
     }
@@ -137,8 +142,7 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
             Timber.i("$TAG::weatherShape() $key, $value")
             if (key == currentParsingDate) {
                 //binding.tvWeatherShape.text = value
-                test += "하늘상태 - $currentParsingDate, ${skyState(value)}\n"
-                binding.textView.text = test
+                // 이미지 변경함.
             }
         }
     }
@@ -161,11 +165,42 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
         mainViewModel.currentTemp.forEach { (key, value) ->
             Timber.i("$TAG::tomorrowWeatherForecast() $key, $value")
             if (key == currentParsingDate) {
-                //binding.tvTomorrowWeatherForecast.text = value
-                test += "1시간 기온 - $currentParsingDate, $value\n"
-                binding.textView.text = test
+                // 현재 온도
+                binding.tvCurrentTempValue.text = "$value°C"
             }
         }
+    }
+
+    // 습도
+    private fun humidity(data: MutableMap<String, String>) {
+        val currentParsingDate = currentParsingDate()
+
+        // 습도
+        data.forEach { (key, value) ->
+            Timber.i("$TAG::humidity() $key, $value")
+            if (key == currentParsingDate) {
+                binding.tvHumidityValue.text = value
+            }
+        }
+    }
+
+    // 풍향
+    private fun windDirection(data: MutableMap<String, String>) {
+        val currentParsingDate = currentParsingDate()
+
+        // 풍향
+        data.forEach { (key, value) ->
+            Timber.i("$TAG::windDirection() $key, $value")
+            if (key == currentParsingDate) {
+                binding.tvWindDirectionValue.text = parseWindDirection(value.toInt())
+            }
+        }
+    }
+
+    private fun parseWindDirection(degrees: Int): String {
+        val directions = arrayOf("북", "북동", "동", "남동", "남", "남서", "서", "북서")
+        val index = ((degrees % 360) / 45).toInt()
+        return directions[index]
     }
 
     private fun swipeRefresh() {
