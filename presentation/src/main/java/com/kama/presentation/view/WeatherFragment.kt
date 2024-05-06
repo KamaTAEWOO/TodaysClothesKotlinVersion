@@ -46,7 +46,7 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
 
     private fun initAppBar() {
         Timber.i("$TAG::initAppBar()")
-        binding.layoutAppbar.tvTitle.text = getString(R.string.weather_title)
+        binding.layoutAppbar.tvTitle.text = getString(R.string.weather_fragment)
     }
 
     private fun init() {

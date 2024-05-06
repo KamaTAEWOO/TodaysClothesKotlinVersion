@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.kama.core.base.BaseFragment
 import com.kama.core.util.WeatherUtil
+import com.kama.design.R
 import com.kama.presentation.clothes.ClothesStyleMan
 import com.kama.presentation.clothes.ClothesStyleWoman
 import com.kama.presentation.databinding.FragmentRecommendClothesBinding
@@ -24,6 +25,7 @@ class RecommendClothesFragment : BaseFragment<FragmentRecommendClothesBinding>()
 
     private val TAG = "RecommendClothesFragment::"
     private lateinit var mainViewModel: MainViewModel
+    private var isRefreshing = false // 새로 고침 여부를 추적하는 플래그
 
     // 온도
     private val tempArray = intArrayOf(4, 5, 9, 12, 17, 20, 23, 28)
@@ -43,6 +45,7 @@ class RecommendClothesFragment : BaseFragment<FragmentRecommendClothesBinding>()
         super.onViewCreated(view, savedInstanceState)
 
         initViewModel()
+        initAppBar()
         init()
     }
 
@@ -51,9 +54,14 @@ class RecommendClothesFragment : BaseFragment<FragmentRecommendClothesBinding>()
         mainViewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
     }
 
+    private fun initAppBar() {
+        Timber.i("$TAG::initAppBar()")
+        binding.layoutAppbar.tvTitle.text = getString(R.string.recommend_clothes_fragment)
+    }
+
     private fun init() {
         Timber.i("$TAG::init()")
-
+        swipeRefresh()
         tempClothes()
     }
 
@@ -260,15 +268,8 @@ class RecommendClothesFragment : BaseFragment<FragmentRecommendClothesBinding>()
 
     private fun swipeRefresh() {
         binding.swipeRefreshLayout.setOnRefreshListener {
-            mainViewModel.requestWeatherData(
-                WeatherUtil.PAGE_NO,
-                WeatherUtil.NUM_OF_ROWS,
-                WeatherUtil.DATA_TYPE,
-                WeatherUtil.BASE_DATE,
-                WeatherUtil.BASE_TIME,
-                WeatherUtil.NX,
-                WeatherUtil.NY
-            )
+            val fragmentTransaction = parentFragmentManager.beginTransaction()
+            fragmentTransaction.detach(this).attach(this).commitAllowingStateLoss() // 새로 고침
             Toast.makeText(requireContext(), "스와이프 완료", Toast.LENGTH_SHORT).show()
             binding.swipeRefreshLayout.isRefreshing = false // 새로고침 완료
         }

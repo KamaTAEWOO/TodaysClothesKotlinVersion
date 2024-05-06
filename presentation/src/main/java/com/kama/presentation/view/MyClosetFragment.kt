@@ -5,12 +5,14 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.kama.core.base.BaseFragment
 import com.kama.core.util.SharedPreferenceHelper
 import com.kama.core.util.WeatherUtil
+import com.kama.design.R
 import com.kama.presentation.adapter.AlbumAddAdapter
 import com.kama.presentation.databinding.FragmentMyClosetBinding
 import com.kama.presentation.viewmodel.MainViewModel
@@ -39,6 +41,7 @@ class MyClosetFragment : BaseFragment<FragmentMyClosetBinding>(), AlbumAddAdapte
         super.onViewCreated(view, savedInstanceState)
 
         initViewModel()
+        initAppBar()
         init()
     }
 
@@ -47,8 +50,14 @@ class MyClosetFragment : BaseFragment<FragmentMyClosetBinding>(), AlbumAddAdapte
         mainViewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
     }
 
+    private fun initAppBar() {
+        Timber.i("$TAG::initAppBar()")
+        binding.layoutAppbar.tvTitle.text = getString(R.string.my_closet_fragment)
+    }
+
     private fun init() {
         Timber.i("$TAG::init()")
+        swipeRefresh()
         imageLoadInit()
     }
 
@@ -95,8 +104,12 @@ class MyClosetFragment : BaseFragment<FragmentMyClosetBinding>(), AlbumAddAdapte
     }
 
     // 자동 화면 리프레쉬
-    private fun refreshFragment() {
-        val fragmentTransaction = parentFragmentManager.beginTransaction()
-        fragmentTransaction.detach(this).attach(this).commit()
+    private fun swipeRefresh() {
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            val fragmentTransaction = parentFragmentManager.beginTransaction()
+            fragmentTransaction.detach(this).attach(this).commitAllowingStateLoss() // 새로 고침
+            Toast.makeText(requireContext(), "스와이프 완료", Toast.LENGTH_SHORT).show()
+            binding.swipeRefreshLayout.isRefreshing = false // 새로고침 완료
+        }
     }
 }

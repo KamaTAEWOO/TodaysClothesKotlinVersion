@@ -39,7 +39,6 @@
     <string name="bottom">하의</string>
 
     <!--    Weather Fragment-->
-    <string name="weather_title">날씨</string>
     <string name="current_location">현재 나의 위치</string>
     <string name="current_temp">0℃</string>
     <string name="current_rain">강수량\t</string>
