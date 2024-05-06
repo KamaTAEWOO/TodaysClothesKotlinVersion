@@ -4,14 +4,18 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.kama.core.base.BaseFragment
 import com.kama.core.util.WeatherUtil
 import com.kama.design.R
 import com.kama.domain.model.WeatherDataEntity
+import com.kama.presentation.adapter.WeatherHourAdapter
+import com.kama.presentation.data.WeatherHourData
 import com.kama.presentation.databinding.FragmentWeatherBinding
 import com.kama.presentation.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
+import java.util.Calendar
 
 @AndroidEntryPoint
 class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
@@ -197,6 +201,13 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
     // 내일 날씨 예보 - 1시간 기온 - viewmodel에 저장된 변수 사용
     private fun tomorrowWeatherForecast() {
         val currentParsingDate = currentParsingDate()
+        val hourData = mutableListOf<WeatherHourData>()
+        var dataCount = 0
+
+        // 현재 시간
+        val currentTime = Calendar.getInstance()
+        val currentHour = currentTime.get(Calendar.HOUR_OF_DAY)
+
         // 1시간 기온
         mainViewModel.currentTemp.forEach { (key, value) ->
             Timber.i("$TAG::tomorrowWeatherForecast() $key, $value")
@@ -204,8 +215,23 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
                 // 현재 온도
                 binding.tvCurrentTempValue.text = "$value°C"
             }
+            // key: 20240302;0500 -> 0500
+            if (WeatherUtil.dataSplit(key).first == WeatherUtil.BASE_DATE) {
+                val time = WeatherUtil.dataSplit(key)
+                val hour = time.second.substring(0, 2).toInt()
+                // 현재 시간 이후의 데이터만 추가하고, 최대 10개의 데이터를 가져옴
+                if (hour >= currentHour && dataCount < 10) {
+                    hourData.add(WeatherHourData(time.second, value))
+                    dataCount++
+                }
+            }
         }
+
+        val adapter = WeatherHourAdapter(hourData)
+        binding.rvHourlyWeather.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.rvHourlyWeather.adapter = adapter
     }
+
 
     // 습도
     private fun humidity(data: MutableMap<String, String>) {

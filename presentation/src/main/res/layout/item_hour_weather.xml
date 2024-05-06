@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textViewTime"
+        android:id="@+id/tv_time"
         android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:text="16:00"
@@ -14,7 +14,7 @@
         android:background="@drawable/bg_line_bleak"/>
 
     <TextView
-        android:id="@+id/textViewTemperature"
+        android:id="@+id/tv_temp"
         android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:text="50도"
