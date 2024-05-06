@@ -235,8 +235,13 @@
 
                     </LinearLayout>
 
-                    <!--                   3시간 마다 날씨-->
-
+                    <!--                   1시간 마다 날씨-->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_hourly_weather"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        app:layout_constraintTop_toBottomOf="@id/ll_table3" />
 
 
                     <!--                   내일 날씨-->

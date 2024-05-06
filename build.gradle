@@ -15,6 +15,7 @@ buildscript {
         lifecycle_extensions_version = '2.2.0'
         lifecycle_compiler_version = '2.2.0'
         glide_version = '4.11.0'
+        recyclerview_version = '1.2.1'
     }
 
     dependencies {

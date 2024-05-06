@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textViewTime"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:text="16:00"
+        android:gravity="center"
+        style="@style/nanumsquare_regular_15"
+        android:background="@drawable/bg_line_bleak"/>
+
+    <TextView
+        android:id="@+id/textViewTemperature"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:text="50도"
+        android:gravity="center"
+        style="@style/nanumsquare_regular_15"
+        android:background="@drawable/bg_line_bleak"/>
+</LinearLayout>
