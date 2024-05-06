@@ -29,7 +29,7 @@ class WeatherHourAdapter(private val weatherList: MutableList<WeatherHourData>) 
 
         fun bind(data: MutableList<WeatherHourData>) {
             time.text = data.get(adapterPosition).time
-            temp.text = data.get(adapterPosition).temperature
+            temp.text = "${data.get(adapterPosition).temperature}℃"
         }
     }
 }
