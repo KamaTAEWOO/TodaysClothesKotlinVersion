@@ -93,8 +93,13 @@ class MyStyleFragment : BaseFragment<FragmentMyStyleBinding>(), AlbumAddAdapter.
         pickImage.launch(intent)
     }
 
-    override fun onItemClick(position: Int) {
+    override fun onItemClick(imageUri: Uri, position: Int) {
         if(position == 0) openAlbum()
+        else {
+            // 이미지 full 화면으로 보기
+            val dialog = FullScreenImageDialog(requireContext(), imageUri.toString())
+            dialog.show()
+        }
     }
 
     // 자동 화면 리프레쉬

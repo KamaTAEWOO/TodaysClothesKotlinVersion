@@ -38,7 +38,7 @@ class AlbumAddAdapter(
 
         holder.imageButton.setOnClickListener {
             Timber.d("$TAG::onBindViewHolder() position: $position")
-            listener?.onItemClick(position)
+            listener?.onItemClick(currentItem, position)
         }
 
         // TODO: Glide 로드 시 캐시 삭제 처리 추후에 해주기
@@ -59,7 +59,7 @@ class AlbumAddAdapter(
     override fun getItemCount() = albumImageList.size
 
     interface OnItemClickListener {
-        fun onItemClick(position: Int)
+        fun onItemClick(imageUri: Uri, position: Int)
     }
 
     fun setOnItemClickListener(listener: OnItemClickListener) {
