@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.github.mikephil.charting.charts.LineChart
 import com.kama.core.base.BaseFragment
 import com.kama.core.util.WeatherUtil
 import com.kama.design.R
@@ -16,6 +17,13 @@ import com.kama.presentation.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import java.util.Calendar
+import android.graphics.Color
+import com.github.mikephil.charting.components.Description
+import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 
 @AndroidEntryPoint
 class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
@@ -230,8 +238,43 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
         val adapter = WeatherHourAdapter(hourData)
         binding.rvHourlyWeather.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.rvHourlyWeather.adapter = adapter
+
+        makeLineChart(binding.chart, hourData)
     }
 
+    private fun makeLineChart(lineChart: LineChart, hourData: List<WeatherHourData>) {
+        Timber.i("$TAG::makeLineChart()")
+
+        val entries = ArrayList<Entry>()
+        val time = ArrayList<String>() // X축 레이블을 저장할 리스트
+
+        hourData.forEachIndexed { index, data ->
+            entries.add(Entry(index.toFloat(), data.temperature.toFloat()))
+            time.add(index.toString()) // index를 레이블 리스트에 추가
+        }
+
+        val dataSet = LineDataSet(entries, "Hourly Temperature")
+        dataSet.color = Color.BLUE
+        dataSet.valueTextColor = Color.BLACK
+        dataSet.setDrawValues(false) // 데이터 값 표시 비활성화
+
+        val lineData = LineData(dataSet)
+
+        lineChart.data = lineData
+        lineChart.setTouchEnabled(true)
+        lineChart.isDragEnabled = true
+        lineChart.setScaleEnabled(true)
+        lineChart.setPinchZoom(true)
+
+        // Y축 레이블 숨기기
+        lineChart.axisRight.setDrawLabels(false)
+        lineChart.axisLeft.granularity = 1f
+
+        // X축 레이블 숨기기
+        lineChart.xAxis.setDrawLabels(false)
+
+        lineChart.invalidate()
+    }
 
     // 습도
     private fun humidity(data: MutableMap<String, String>) {
