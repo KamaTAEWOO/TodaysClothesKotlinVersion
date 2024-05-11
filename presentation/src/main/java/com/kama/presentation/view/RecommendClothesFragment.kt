@@ -25,7 +25,6 @@ class RecommendClothesFragment : BaseFragment<FragmentRecommendClothesBinding>()
 
     private val TAG = "RecommendClothesFragment::"
     private lateinit var mainViewModel: MainViewModel
-    private var isRefreshing = false // 새로 고침 여부를 추적하는 플래그
 
     // 온도
     private val tempArray = intArrayOf(4, 5, 9, 12, 17, 20, 23, 28)
@@ -70,15 +69,15 @@ class RecommendClothesFragment : BaseFragment<FragmentRecommendClothesBinding>()
      * 설문조사에 따른 나의 스타일도 참고
      * */
     private fun tempClothes() {
-        val lowTemp = 2 // 최저 온도
-        val highTemp = 35 // 최고 온도
+        val lowTemp: Int = mainViewModel.minTemp.toDoubleOrNull()?.toInt() ?: 0 // 최저 온도
+        val highTemp: Int = mainViewModel.maxTemp.toDoubleOrNull()?.toInt() ?: 0 // 최고 온도
 
         // lowTemp에 따른 옷 추천
         for (i in tempArray) {
             if(tempArray.first() > lowTemp) {
                 lowRecommendClothesCheck(i)
                 break
-            } else if(lowTemp > i) {
+            } else if(lowTemp <= i) {
                 lowRecommendClothesCheck(i)
                 break
             }
