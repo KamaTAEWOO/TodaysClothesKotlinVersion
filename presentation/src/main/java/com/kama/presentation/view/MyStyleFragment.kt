@@ -61,7 +61,7 @@ class MyStyleFragment : BaseFragment<FragmentMyStyleBinding>(), AlbumAddAdapter.
     private fun imageLoadInit() {
         binding.rvMyAlbums.layoutManager = GridLayoutManager(requireContext(), 3)
         val initDrawable: MutableList<Uri> = mutableListOf()
-        initDrawable.add(WeatherUtil.getResourceUri(requireContext(), com.kama.design.R.drawable.ic_buttonplus))
+        initDrawable.add(WeatherUtil.getResourceUri(requireContext(), R.drawable.ic_buttonplus))
         // 데이터 있을 시 데이터 로드
         val sharedPreferenceHelper = SharedPreferenceHelper(requireContext(), sharedPreferenceFile)
         sharedPreferenceHelper.getImageList(sharedPreferenceFile).let {

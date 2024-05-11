@@ -14,7 +14,6 @@ object WeatherUtil {
     private val TAG = "@@EduforallUtil"
 
     private const val SHARED_PREFS_NAME = "weatherinfo_app_shared_prefs"
-    private const val LOGIN_KEY = "login_result"
 
     // Request Weather Data
     const val PAGE_NO = 1
@@ -24,6 +23,9 @@ object WeatherUtil {
     const val BASE_TIME = "0500"
     var NX = "55"
     var NY = "127"
+
+    // shared preference key
+    const val SURVEY_DATA_KEY = "survey_data_key"
 
     /**
      ** 금일 날짜
@@ -47,30 +49,30 @@ object WeatherUtil {
     /**
      ** Data 저장
      */
-    fun saveSharedPreferenceData(context: Context, accessToken: String) {
+    fun saveSharedPreferenceData(context: Context, key: String, accessToken: String) {
         val sharedPreferences =
             context.getSharedPreferences(SHARED_PREFS_NAME, Context.MODE_PRIVATE)
         val editor: SharedPreferences.Editor = sharedPreferences.edit()
-        editor.putString(LOGIN_KEY, accessToken)
+        editor.putString(key, accessToken)
         editor.apply()
     }
 
     /**
      ** Data 가져오기
      */
-    fun loadSharedPreferenceData(context: Context): String? {
+    fun loadSharedPreferenceData(context: Context, key: String): String? {
         val sharedPreferences =
             context.getSharedPreferences(SHARED_PREFS_NAME, Context.MODE_PRIVATE)
-        return sharedPreferences.getString(LOGIN_KEY, null)
+        return sharedPreferences.getString(key, null)
     }
 
     /**
      ** Data 삭제
      */
-    fun clearAccessToken(context: Context) {
+    fun clearAccessToken(context: Context, key: String) {
         val sharedPreferences =
             context.getSharedPreferences(SHARED_PREFS_NAME, Context.MODE_PRIVATE)
-        sharedPreferences.edit().remove(LOGIN_KEY).apply()
+        sharedPreferences.edit().remove(key).apply()
     }
 
     /**

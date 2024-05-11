@@ -22,9 +22,13 @@ class MyStyleSurveyActivity : BaseActivity<ActivityMyStyleSurveyBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-//        startActivity(Intent(this, MainViewActivity::class.java))
-        initAppBar()
-        init()
+        if(WeatherUtil.loadSharedPreferenceData(this, WeatherUtil.SURVEY_DATA_KEY)?.isNotEmpty() == true) {
+            startActivity(Intent(this, MainViewActivity::class.java))
+            finish()
+        } else {
+            initAppBar()
+            init()
+        }
     }
 
     private fun initAppBar() {
@@ -64,6 +68,8 @@ class MyStyleSurveyActivity : BaseActivity<ActivityMyStyleSurveyBinding>() {
     fun onConfirmClick(v: View) {
         Timber.i("$TAG::onConfirmClick()")
         Toast.makeText(this, getString(R.string.survey_complete), Toast.LENGTH_SHORT).show()
+        val surveyData = "$surveySex,$surveyHeat,$surveyStyle"
+        WeatherUtil.saveSharedPreferenceData(this, WeatherUtil.SURVEY_DATA_KEY, surveyData)
         startActivity(Intent(this, MainViewActivity::class.java))
         finish()
     }
