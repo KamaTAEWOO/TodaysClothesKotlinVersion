@@ -47,6 +47,9 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
     private fun initAppBar() {
         Timber.i("$TAG::initAppBar()")
         binding.layoutAppbar.tvTitle.text = getString(R.string.weather_fragment)
+        binding.layoutAppbar.ivSetting.setOnClickListener {
+            (activity as MainViewActivity).showPopupMenu(it)
+        }
     }
 
     private fun init() {

@@ -5,6 +5,10 @@ import android.content.pm.PackageManager
 import android.location.Address
 import android.location.Geocoder
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
+import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
@@ -145,6 +149,27 @@ class MainViewActivity : BaseActivity<ActivityMainViewBinding>() {
                 Timber.e("Permissions denied")
             }
         }
+    }
+
+    fun showPopupMenu(view: View) {
+        val popupMenu = PopupMenu(this, view)
+        popupMenu.menuInflater.inflate(com.kama.design.R.menu.option, popupMenu.menu)
+
+        popupMenu.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                com.kama.design.R.id.option_modify_servey -> {
+                    Timber.i("$TAG::onOptionsItemSelected() option_modify_servey")
+                    true
+                }
+                com.kama.design.R.id.option_close -> {
+                    Timber.i("$TAG::onOptionsItemSelected() option_close")
+                    true
+                }
+                else -> false
+            }
+        }
+
+        popupMenu.show()
     }
 
     override fun onDestroy() {

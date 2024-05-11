@@ -7,6 +7,10 @@
     <string name="my_closet_fragment">내 옷장</string>
     <string name="my_style_fragment">내 스타일</string>
 
+    <!--    Option-->
+    <string name="close">끝내기</string>
+    <string name="modify_survey">내 스타일 수정</string>
+
     <!--    Weather Data-->
     <string name="waiting_data">잠시만 기다려주세요.</string>
     <string name="splash_name1">Today\'s</string>
