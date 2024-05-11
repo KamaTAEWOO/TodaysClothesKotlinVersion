@@ -30,11 +30,11 @@ class RecommendClothesFragment : BaseFragment<FragmentRecommendClothesBinding>()
     private val tempArray = intArrayOf(4, 5, 9, 12, 17, 20, 23, 28)
 
     // 설문 조사에 따른 나의 성별
-    private val surveyGender = "남자"
+    private val surveyGender = MyStyleSurveyActivity.surveySex
     // 설문 조사에 따른 나의 스타일
-    private val surveyStyle = "캐주얼"
+    private val surveyStyle = MyStyleSurveyActivity.surveyStyle
     // 설문 조사에 따른 나의 더위 타입 정도
-    private val surveyHotType = "많이"
+    private val surveyHotType = MyStyleSurveyActivity.surveyHeat
 
 
     override fun getFragmentBinding(): FragmentRecommendClothesBinding =
@@ -136,11 +136,11 @@ class RecommendClothesFragment : BaseFragment<FragmentRecommendClothesBinding>()
 
         // 스타일
         when(surveyStyle) {
-            "캐주얼" -> result += "A"
-            "빈티지" -> result += "B"
-            "스트릿" -> result += "C"
-            "댄디" -> result += "D"
-            "스포티" -> result += "E"
+            "캐주얼 스타일" -> result += "A"
+            "빈티지 스타일" -> result += "B"
+            "스트릿 스타일" -> result += "C"
+            "댄디 스타일" -> result += "D"
+            "스포티 스타일" -> result += "E"
         }
 
         // 온도
@@ -155,21 +155,21 @@ class RecommendClothesFragment : BaseFragment<FragmentRecommendClothesBinding>()
             // 남자
             // 스타일 확인
             return when(surveyStyle) {
-                "캐주얼" -> ClothesStyleMan.getInstance().getCasualStyle(style)
-                "빈티지" -> ClothesStyleMan.getInstance().getVintageStyle(style)
-                "스트릿" -> ClothesStyleMan.getInstance().getStreetStyle(style)
-                "댄디" -> ClothesStyleMan.getInstance().getDandyStyle(style)
-                "스포티" -> ClothesStyleMan.getInstance().getSportyStyle(style)
+                "캐주얼 스타일" -> ClothesStyleMan.getInstance().getCasualStyle(style)
+                "빈티지 스타일" -> ClothesStyleMan.getInstance().getVintageStyle(style)
+                "스트릿 스타일" -> ClothesStyleMan.getInstance().getStreetStyle(style)
+                "댄디 스타일" -> ClothesStyleMan.getInstance().getDandyStyle(style)
+                "스포티 스타일" -> ClothesStyleMan.getInstance().getSportyStyle(style)
                 else -> intArrayOf()
             }
         } else {
             // 여자
             return when(surveyStyle) {
-                "캐주얼" -> ClothesStyleWoman.getInstance().getCasualStyle(style)
-                "빈티지" -> ClothesStyleWoman.getInstance().getVintageStyle(style)
-                "스트릿" -> ClothesStyleWoman.getInstance().getStreetStyle(style)
-                "댄디" -> ClothesStyleWoman.getInstance().getDandyStyle(style)
-                "스포티" -> ClothesStyleWoman.getInstance().getSportyStyle(style)
+                "캐주얼 스타일" -> ClothesStyleWoman.getInstance().getCasualStyle(style)
+                "빈티지 스타일" -> ClothesStyleWoman.getInstance().getVintageStyle(style)
+                "스트릿 스타일" -> ClothesStyleWoman.getInstance().getStreetStyle(style)
+                "댄디 스타일" -> ClothesStyleWoman.getInstance().getDandyStyle(style)
+                "스포티 스타일" -> ClothesStyleWoman.getInstance().getSportyStyle(style)
                 else -> intArrayOf()
             }
         }
@@ -181,21 +181,21 @@ class RecommendClothesFragment : BaseFragment<FragmentRecommendClothesBinding>()
             // 남자
             // 스타일 확인
             return when(surveyStyle) {
-                "캐주얼" -> ClothesStyleMan.getInstance().getCasualStyleText(style)
-                "빈티지" -> ClothesStyleMan.getInstance().getVintageStyleText(style)
-                "스트릿" -> ClothesStyleMan.getInstance().getStreetStyleText(style)
-                "댄디" -> ClothesStyleMan.getInstance().getDandyStyleText(style)
-                "스포티" -> ClothesStyleMan.getInstance().getSportyStyleText(style)
+                "캐주얼 스타일" -> ClothesStyleMan.getInstance().getCasualStyleText(style)
+                "빈티지 스타일" -> ClothesStyleMan.getInstance().getVintageStyleText(style)
+                "스트릿 스타일" -> ClothesStyleMan.getInstance().getStreetStyleText(style)
+                "댄디 스타일" -> ClothesStyleMan.getInstance().getDandyStyleText(style)
+                "스포티 스타일" -> ClothesStyleMan.getInstance().getSportyStyleText(style)
                 else -> arrayOf()
             }
         } else {
             // 여자
             return when(surveyStyle) {
-                "캐주얼" -> ClothesStyleWoman.getInstance().getCasualStyleText(style)
-                "빈티지" -> ClothesStyleWoman.getInstance().getVintageStyleText(style)
-                "스트릿" -> ClothesStyleWoman.getInstance().getStreetStyleText(style)
-                "댄디" -> ClothesStyleWoman.getInstance().getDandyStyleText(style)
-                "스포티" -> ClothesStyleWoman.getInstance().getSportyStyleText(style)
+                "캐주얼 스타일" -> ClothesStyleWoman.getInstance().getCasualStyleText(style)
+                "빈티지 스타일" -> ClothesStyleWoman.getInstance().getVintageStyleText(style)
+                "스트릿 스타일" -> ClothesStyleWoman.getInstance().getStreetStyleText(style)
+                "댄디 스타일" -> ClothesStyleWoman.getInstance().getDandyStyleText(style)
+                "스포티 스타일" -> ClothesStyleWoman.getInstance().getSportyStyleText(style)
                 else -> arrayOf()
             }
         }

@@ -1,208 +1,229 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/white"
+    tools:context=".view.MyStyleSurveyActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".view.MyStyleSurveyActivity">
+    <!-- App bar -->
+    <include
+        android:id="@+id/layout_appbar"
+        layout="@layout/layout_appbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <!--        title-->
-        <TextView
-            android:id="@+id/tv_survey_title"
-            style="@style/nanumsquare_bold_25"
+    <!-- ScrollView -->
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_appbar">
+
+        <!-- LinearLayout to host multiple children -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/survey_title"
-            android:textColor="@color/main_tv"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
 
-        <!--         성별-->
-        <TextView
-            android:id="@+id/tv_survey_sex"
-            style="@style/nanumsquare_extrabold_20"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/survey_sex"
-            android:textColor="@color/main_tv"
-            android:layout_marginStart="40dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_survey_title" />
-
-        <RadioGroup
-            android:id="@+id/rg_survey_sex"
-            style="@style/nanumsquare_extrabold_20"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_survey_sex">
-
-            <!--        남자-->
-            <RadioButton
-                android:id="@+id/rb_man"
-                style="@style/nanumsquare_regular_18"
+            <!--         성별-->
+            <TextView
+                android:id="@+id/tv_survey_sex"
+                style="@style/nanumsquare_extrabold_20"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/survey_sex_man"
-                android:textColor="@color/main_tv"/>
+                android:layout_marginStart="40dp"
+                android:text="@string/survey_sex"
+                android:textColor="@color/main_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rg_survey_sex" />
 
-            <!--        여자-->
-            <RadioButton
-                android:id="@+id/rb_woman"
-                style="@style/nanumsquare_regular_18"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/survey_sex_woman"
-                android:textColor="@color/main_tv"/>
-        </RadioGroup>
-
-        <!--        더위 난이도-->
-        <TextView
-            android:id="@+id/tv_survey_heat"
-            style="@style/nanumsquare_extrabold_20"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/survey_heat"
-            android:textColor="@color/main_tv"
-            android:layout_marginStart="40dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rg_survey_sex" />
-
-        <RadioGroup
-            android:id="@+id/rg_survey_heat"
-            style="@style/nanumsquare_extrabold_20"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_survey_heat">
-
-            <!--        더위 많이 타는 타입-->
-            <RadioButton
-                android:id="@+id/rb_much_heat"
-                style="@style/nanumsquare_regular_18"
+            <RadioGroup
+                android:id="@+id/rg_survey_sex"
+                style="@style/nanumsquare_extrabold_20"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/survey_heat_very"
-                android:textColor="@color/main_tv"/>
+                android:layout_marginStart="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_survey_sex">
 
-            <!--        더위 적게 타는 타입-->
-            <RadioButton
-                android:id="@+id/rb_little_heat"
-                style="@style/nanumsquare_regular_18"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/survey_heat_little"
-                android:textColor="@color/main_tv"/>
-        </RadioGroup>
+                <!--        남자-->
+                <RadioButton
+                    android:id="@+id/rb_man"
+                    style="@style/nanumsquare_regular_18"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/survey_sex_man"
+                    android:textColor="@color/main_tv" />
 
-        <!--        스타일 종류-->
-        <TextView
-            android:id="@+id/tv_survey_style"
-            style="@style/nanumsquare_extrabold_20"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/survey_style"
-            android:textColor="@color/main_tv"
-            android:layout_marginStart="40dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rg_survey_heat" />
+                <!--        여자-->
+                <RadioButton
+                    android:id="@+id/rb_woman"
+                    style="@style/nanumsquare_regular_18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/survey_sex_woman"
+                    android:textColor="@color/main_tv" />
+            </RadioGroup>
 
-        <RadioGroup
-            android:id="@+id/rg_survey_style"
-            style="@style/nanumsquare_extrabold_20"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_survey_style">
-
-            <!--        캐주얼 스타일-->
-            <RadioButton
-                android:id="@+id/rb_style_casual"
-                style="@style/nanumsquare_regular_18"
+            <!--        더위 난이도-->
+            <TextView
+                android:id="@+id/tv_survey_heat"
+                style="@style/nanumsquare_extrabold_20"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/survey_style_casual"
-                android:textColor="@color/main_tv"/>
+                android:layout_marginStart="40dp"
+                android:text="@string/survey_heat"
+                android:textColor="@color/main_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rg_survey_sex" />
 
-            <!--        스트릿 스타일-->
-            <RadioButton
-                android:id="@+id/rb_style_vintage"
-                style="@style/nanumsquare_regular_18"
-                android:layout_width="wrap_content"
+            <RadioGroup
+                android:id="@+id/rg_survey_heat"
+                style="@style/nanumsquare_extrabold_20"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/survey_style_vintage"
-                android:textColor="@color/main_tv"/>
+                android:layout_marginStart="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_survey_heat">
 
-            <!--            빈티지 스타일-->
-            <RadioButton
-                android:id="@+id/rb_style_street"
-                style="@style/nanumsquare_regular_18"
-                android:layout_width="wrap_content"
+                <!--        더위 많이 타는 타입-->
+                <RadioButton
+                    android:id="@+id/rb_much_heat"
+                    style="@style/nanumsquare_regular_18"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/survey_heat_very"
+                    android:textColor="@color/main_tv" />
+
+                <!--        더위 적게 타는 타입-->
+                <RadioButton
+                    android:id="@+id/rb_little_heat"
+                    style="@style/nanumsquare_regular_18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/survey_heat_little"
+                    android:textColor="@color/main_tv" />
+            </RadioGroup>
+
+            <!--        스타일 종류-->
+            <TextView
+                android:id="@+id/tv_survey_style"
+                style="@style/nanumsquare_extrabold_20"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/survey_style_street"
-                android:textColor="@color/main_tv"/>
+                android:layout_marginStart="40dp"
+                android:text="@string/survey_style"
+                android:textColor="@color/main_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rg_survey_heat" />
 
-            <!--            댄디 스타일-->
-            <RadioButton
-                android:id="@+id/rb_style_dandy"
-                style="@style/nanumsquare_regular_18"
-                android:layout_width="wrap_content"
+            <RadioGroup
+                android:id="@+id/rg_survey_style"
+                style="@style/nanumsquare_extrabold_20"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/survey_style_dandy"
-                android:textColor="@color/main_tv"/>
+                android:layout_marginStart="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_survey_style">
 
-            <!--            스포티 스타일-->
-            <RadioButton
-                android:id="@+id/rb_style_sporty"
-                style="@style/nanumsquare_regular_18"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/survey_style_sporty"
-                android:textColor="@color/main_tv"/>
-        </RadioGroup>
+                <!--        캐주얼 스타일-->
+                <RadioButton
+                    android:id="@+id/rb_style_casual"
+                    style="@style/nanumsquare_regular_18"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/survey_style_casual"
+                    android:textColor="@color/main_tv" />
 
-        <!--        확인 버튼-->
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_survey_confirm"
-            style="@style/nanumsquare_extrabold_20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/survey_confirm"
-            android:background="@color/black"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toStartOf="@id/btn_survey_cancel"
-            app:layout_constraintHorizontal_chainStyle="spread"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rg_survey_style" />
+                <!--        스트릿 스타일-->
+                <RadioButton
+                    android:id="@+id/rb_style_vintage"
+                    style="@style/nanumsquare_regular_18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/survey_style_vintage"
+                    android:textColor="@color/main_tv" />
 
-        <!--        취소 버튼-->
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_survey_cancel"
-            style="@style/nanumsquare_extrabold_20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/survey_cancel"
-            android:background="@color/black"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/btn_survey_confirm"
-            app:layout_constraintTop_toTopOf="@id/btn_survey_confirm" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+                <!--            빈티지 스타일-->
+                <RadioButton
+                    android:id="@+id/rb_style_street"
+                    style="@style/nanumsquare_regular_18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/survey_style_street"
+                    android:textColor="@color/main_tv" />
+
+                <!--            댄디 스타일-->
+                <RadioButton
+                    android:id="@+id/rb_style_dandy"
+                    style="@style/nanumsquare_regular_18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/survey_style_dandy"
+                    android:textColor="@color/main_tv" />
+
+                <!--            스포티 스타일-->
+                <RadioButton
+                    android:id="@+id/rb_style_sporty"
+                    style="@style/nanumsquare_regular_18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/survey_style_sporty"
+                    android:textColor="@color/main_tv" />
+            </RadioGroup>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:orientation="horizontal">
+
+                <!--        확인 버튼-->
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_survey_confirm"
+                    style="@style/nanumsquare_extrabold_20"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/main_color"
+                    android:onClick="onConfirmClick"
+                    android:text="@string/survey_confirm"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toStartOf="@id/btn_survey_cancel"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rg_survey_style" />
+
+                <!--        취소 버튼-->
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_survey_cancel"
+                    style="@style/nanumsquare_extrabold_20"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/main_color"
+                    android:onClick="onCancelClick"
+                    android:text="@string/survey_cancel"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/btn_survey_confirm"
+                    app:layout_constraintTop_toTopOf="@id/btn_survey_confirm" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

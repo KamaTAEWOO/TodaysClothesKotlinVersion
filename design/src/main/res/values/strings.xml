@@ -15,7 +15,7 @@
     <string name="splash_name4">출처: 앱에 사용된 이미지의 출처는 무신사에 있음을 알림.</string>
 
     <!--    Survey-->
-    <string name="survey_title">My Style Setting</string>
+    <string name="survey_title">나의 스타일 설정</string>
     <string name="survey_sex">성별</string>
     <string name="survey_sex_man">남자</string>
     <string name="survey_sex_woman">여자</string>
@@ -30,6 +30,8 @@
     <string name="survey_style_sporty">스포티 스타일</string>
     <string name="survey_confirm">확인</string>
     <string name="survey_cancel">취소</string>
+    <string name="survey_complete">설문지를 저장하였습니다.</string>
+    <string name="survey_error">설문지를 저장하지 못했습니다.</string>
 
     <!--    Recommend_Clothes-->
     <string name="high_temp">최고온도</string>
