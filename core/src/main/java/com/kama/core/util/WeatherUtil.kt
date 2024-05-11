@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.net.ConnectivityManager
 import android.net.Uri
+import timber.log.Timber
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -50,6 +51,7 @@ object WeatherUtil {
      ** Data 저장
      */
     fun saveSharedPreferenceData(context: Context, key: String, accessToken: String) {
+        Timber.d("saveSharedPreferenceData: $accessToken")
         val sharedPreferences =
             context.getSharedPreferences(SHARED_PREFS_NAME, Context.MODE_PRIVATE)
         val editor: SharedPreferences.Editor = sharedPreferences.edit()
@@ -63,6 +65,7 @@ object WeatherUtil {
     fun loadSharedPreferenceData(context: Context, key: String): String? {
         val sharedPreferences =
             context.getSharedPreferences(SHARED_PREFS_NAME, Context.MODE_PRIVATE)
+        Timber.d("loadSharedPreferenceData: ${sharedPreferences.getString(key, null)}")
         return sharedPreferences.getString(key, null)
     }
 

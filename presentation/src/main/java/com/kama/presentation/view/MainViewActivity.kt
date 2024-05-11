@@ -1,6 +1,7 @@
 package com.kama.presentation.view
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Address
 import android.location.Geocoder
@@ -159,10 +160,14 @@ class MainViewActivity : BaseActivity<ActivityMainViewBinding>() {
             when (item.itemId) {
                 com.kama.design.R.id.option_modify_servey -> {
                     Timber.i("$TAG::onOptionsItemSelected() option_modify_servey")
+                    val intent = Intent(this, MyStyleSurveyActivity::class.java)
+                    intent.putExtra("option", "option")
+                    startActivity(intent)
                     true
                 }
                 com.kama.design.R.id.option_close -> {
                     Timber.i("$TAG::onOptionsItemSelected() option_close")
+                    finishAffinity()
                     true
                 }
                 else -> false
