@@ -59,7 +59,7 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
     private fun weatherDataReceive() {
         Timber.i("$TAG::weatherDataReceive()")
         mainViewModel.result.observe(viewLifecycleOwner) { resultData ->
-            Timber.d("$TAG::result.observe() $resultData")
+            //Timber.d("$TAG::result.observe() $resultData")
             if (resultData) {
                 weatherDataParsing(mainViewModel.weatherData)
             } else {
@@ -69,7 +69,7 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
     }
 
     private fun weatherDataParsing(weatherData: MutableList<WeatherDataEntity>) {
-        Timber.i("$TAG::weatherDataParsing()")
+        //Timber.i("$TAG::weatherDataParsing()")
         // 강수량 - 강수확률
         val rainAmount: MutableMap<String, String> = mutableMapOf()
         // 바람세기 - 풍속
@@ -126,7 +126,7 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
 
         // 강수확률
         data.forEach { (key, value) ->
-            Timber.i("$TAG::rainAmount() $key, $value")
+            //Timber.i("$TAG::rainAmount() $key, $value")
             if (key == currentParsingDate) {
                 binding.tvRainValue.text = value
             }
@@ -139,7 +139,7 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
 
         // 풍속
         data.forEach { (key, value) ->
-            Timber.i("$TAG::windStrength() $key, $value")
+            //Timber.i("$TAG::windStrength() $key, $value")
             if (key == currentParsingDate) {
                 binding.tvWindValue.text = value
             }
@@ -154,7 +154,7 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
 
         // 하늘상태
         data.forEach { (key, value) ->
-            Timber.i("$TAG::weatherShape() $key, $value")
+            //Timber.i("$TAG::weatherShape() $key, $value")
             if (key == currentParsingDate) {
                 // 이미지 변경함.
                 binding.ivWeather.setImageResource(
@@ -185,7 +185,7 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
         val currentParsingDate = currentParsingDate()
 
         data.forEach { (key, value) ->
-            Timber.i("$TAG::rainType() $key, $value")
+            //Timber.i("$TAG::rainType() $key, $value")
             if (key == currentParsingDate) {
                 return when (value) {
                     "0" -> R.drawable.ic_cloud
@@ -215,7 +215,7 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
 
         // 1시간 기온
         mainViewModel.currentTemp.forEach { (key, value) ->
-            Timber.i("$TAG::tomorrowWeatherForecast() $key, $value")
+            //Timber.i("$TAG::tomorrowWeatherForecast() $key, $value")
             if (key == currentParsingDate) {
                 // 현재 온도
                 binding.tvCurrentTempValue.text = "$value°C"
@@ -279,7 +279,7 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
 
         // 습도
         data.forEach { (key, value) ->
-            Timber.i("$TAG::humidity() $key, $value")
+            //Timber.i("$TAG::humidity() $key, $value")
             if (key == currentParsingDate) {
                 binding.tvHumidityValue.text = value
             }
@@ -292,7 +292,7 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
 
         // 풍향
         data.forEach { (key, value) ->
-            Timber.i("$TAG::windDirection() $key, $value")
+            //Timber.i("$TAG::windDirection() $key, $value")
             if (key == currentParsingDate) {
                 binding.tvWindDirectionValue.text = parseWindDirection(value.toInt())
             }
