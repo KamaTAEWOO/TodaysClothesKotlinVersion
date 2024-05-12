@@ -36,6 +36,12 @@ class MyStyleSurveyActivity : BaseActivity<ActivityMyStyleSurveyBinding>() {
             setData()
         } else {
             if(WeatherUtil.loadSharedPreferenceData(this, WeatherUtil.SURVEY_DATA_KEY)?.isNotEmpty() == true) {
+                WeatherUtil.loadSharedPreferenceData(this, WeatherUtil.SURVEY_DATA_KEY)?.let {
+                    val surveyData = it.split(",")
+                    surveySex = surveyData[0]
+                    surveyHeat = surveyData[1]
+                    surveyStyle = surveyData[2]
+                }
                 startActivity(Intent(this, MainViewActivity::class.java))
                 finish()
             } else {
