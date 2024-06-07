@@ -13,7 +13,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:text="Test"
-        android:textColor="@color/main_tv"
+        android:textColor="@color/main_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +25,7 @@
         android:layout_height="30dp"
         android:layout_marginEnd="15dp"
         android:background="@drawable/setting"
-        android:backgroundTint="@color/main_color"
+        android:backgroundTint="@color/sub_the_gray_color"
         android:contentDescription="설정버튼"
         app:layout_constraintBottom_toBottomOf="@id/tv_title"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,7 +34,7 @@
     <View
         android:layout_width="0dp"
         android:layout_height="0.3dp"
-        android:background="@color/light_silver"
+        android:background="@color/sub_gray_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

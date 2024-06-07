@@ -25,7 +25,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/ic_location"
-        android:backgroundTint="@color/main_color"
+        android:backgroundTint="@color/sub_the_gray_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/layout_appbar" />
 
@@ -37,7 +37,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:text="@string/current_location"
-        android:textColor="@color/main_tv"
+        android:textColor="@color/main_color"
         app:layout_constraintBottom_toBottomOf="@id/iv_location"
         app:layout_constraintStart_toEndOf="@id/iv_location"
         app:layout_constraintTop_toTopOf="@id/iv_location" />
@@ -89,7 +89,7 @@
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
                         android:text="@string/current_temp"
-                        android:textColor="@color/main_tv"
+                        android:textColor="@color/main_color"
                         app:layout_constraintBottom_toBottomOf="@id/iv_weather"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/iv_weather"
@@ -117,7 +117,7 @@
                             android:layout_weight="1"
                             android:gravity="left"
                             android:text="@string/current_rain"
-                            android:textColor="@color/main_tv" />
+                            android:textColor="@color/sub_the_gray_color" />
 
                         <TextView
                             android:id="@+id/tv_rain_value"
@@ -128,7 +128,7 @@
                             android:layout_weight="1"
                             android:gravity="right"
                             android:text="@string/current_temp"
-                            android:textColor="@color/main_tv" />
+                            android:textColor="@color/main_color" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -153,7 +153,7 @@
                             android:layout_weight="1"
                             android:gravity="left"
                             android:text="@string/current_wind_speed"
-                            android:textColor="@color/main_tv" />
+                            android:textColor="@color/sub_the_gray_color" />
 
                         <TextView
                             android:id="@+id/tv_wind_value"
@@ -164,7 +164,7 @@
                             android:layout_weight="1"
                             android:gravity="right"
                             android:text="@string/current_temp"
-                            android:textColor="@color/main_tv" />
+                            android:textColor="@color/main_color" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -188,7 +188,7 @@
                             android:layout_weight="1"
                             android:gravity="left"
                             android:text="@string/current_humidity"
-                            android:textColor="@color/main_tv" />
+                            android:textColor="@color/sub_the_gray_color" />
 
                         <TextView
                             android:id="@+id/tv_humidity_value"
@@ -199,7 +199,7 @@
                             android:layout_weight="1"
                             android:gravity="right"
                             android:text="@string/current_temp"
-                            android:textColor="@color/main_tv" />
+                            android:textColor="@color/main_color" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -221,7 +221,7 @@
                             android:layout_marginTop="10dp"
                             android:layout_weight="1"
                             android:text="@string/current_wind"
-                            android:textColor="@color/main_tv" />
+                            android:textColor="@color/sub_the_gray_color" />
 
                         <TextView
                             android:id="@+id/tv_wind_direction_value"
@@ -232,7 +232,7 @@
                             android:layout_weight="1"
                             android:gravity="right"
                             android:text="@string/current_temp"
-                            android:textColor="@color/main_tv" />
+                            android:textColor="@color/main_color" />
 
                     </LinearLayout>
 

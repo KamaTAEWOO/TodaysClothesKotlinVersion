@@ -9,7 +9,7 @@
         android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textColor="@color/main_tv"
+        android:textColor="@color/sub_the_gray_color"
         style="@style/nanumsquare_bold_20"
         android:background="@drawable/bg_line_bleak"/>
 
@@ -18,7 +18,7 @@
         android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textColor="@color/main_tv"
+        android:textColor="@color/main_color"
         style="@style/nanumsquare_bold_20"
         android:background="@drawable/bg_line_bleak"/>
 </LinearLayout>

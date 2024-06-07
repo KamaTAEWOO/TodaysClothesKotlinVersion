@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
                 android:text="@string/survey_sex"
-                android:textColor="@color/main_tv"
+                android:textColor="@color/sub_blue_color"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/rg_survey_sex" />
@@ -63,7 +63,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/survey_sex_man"
-                    android:textColor="@color/main_tv" />
+                    android:textColor="@color/sub_blue_color" />
 
                 <!--        여자-->
                 <RadioButton
@@ -72,7 +72,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/survey_sex_woman"
-                    android:textColor="@color/main_tv" />
+                    android:textColor="@color/sub_blue_color" />
             </RadioGroup>
 
             <!--        더위 난이도-->
@@ -83,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
                 android:text="@string/survey_heat"
-                android:textColor="@color/main_tv"
+                android:textColor="@color/sub_blue_color"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/rg_survey_sex" />
@@ -105,7 +105,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/survey_heat_very"
-                    android:textColor="@color/main_tv" />
+                    android:textColor="@color/sub_blue_color" />
 
                 <!--        더위 적게 타는 타입-->
                 <RadioButton
@@ -114,7 +114,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/survey_heat_little"
-                    android:textColor="@color/main_tv" />
+                    android:textColor="@color/sub_blue_color" />
             </RadioGroup>
 
             <!--        스타일 종류-->
@@ -125,7 +125,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
                 android:text="@string/survey_style"
-                android:textColor="@color/main_tv"
+                android:textColor="@color/sub_blue_color"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/rg_survey_heat" />
@@ -147,7 +147,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/survey_style_casual"
-                    android:textColor="@color/main_tv" />
+                    android:textColor="@color/sub_blue_color" />
 
                 <!--        스트릿 스타일-->
                 <RadioButton
@@ -156,7 +156,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/survey_style_vintage"
-                    android:textColor="@color/main_tv" />
+                    android:textColor="@color/sub_blue_color" />
 
                 <!--            빈티지 스타일-->
                 <RadioButton
@@ -165,7 +165,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/survey_style_street"
-                    android:textColor="@color/main_tv" />
+                    android:textColor="@color/sub_blue_color" />
 
                 <!--            댄디 스타일-->
                 <RadioButton
@@ -174,7 +174,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/survey_style_dandy"
-                    android:textColor="@color/main_tv" />
+                    android:textColor="@color/sub_blue_color" />
 
                 <!--            스포티 스타일-->
                 <RadioButton
@@ -183,7 +183,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/survey_style_sporty"
-                    android:textColor="@color/main_tv" />
+                    android:textColor="@color/sub_blue_color" />
             </RadioGroup>
 
             <LinearLayout
