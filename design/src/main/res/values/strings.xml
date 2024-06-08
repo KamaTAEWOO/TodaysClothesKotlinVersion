@@ -43,6 +43,7 @@
     <string name="outer">아우터</string>
     <string name="top">상의</string>
     <string name="bottom">하의</string>
+    <string name="text_empty">데이터가 없습니다.</string>
 
     <!--    Weather Fragment-->
     <string name="current_location">현재 나의 위치</string>

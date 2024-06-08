@@ -35,7 +35,7 @@
         android:layout_height="75dp"
         android:layout_gravity="bottom"
         app:elevation="1dp"
-        app:itemBackground="@color/white"
+        app:itemBackground="@color/main_bg_color"
         app:itemPaddingBottom="25dp"
         app:itemPaddingTop="17dp"
         app:labelVisibilityMode="labeled"

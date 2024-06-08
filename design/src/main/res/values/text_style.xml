@@ -59,6 +59,11 @@
         <item name="android:textSize">18sp</item>
     </style>
 
+    <style name="nanumsquare_bold_14">
+        <item name="fontFamily">@font/nanumsquare_bold</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
     <style name="nanumsquare_regular_18">
         <item name="fontFamily">@font/nanumsquare_regular</item>
         <item name="android:textSize">18sp</item>
@@ -67,6 +72,11 @@
     <style name="nanumsquare_regular_15">
         <item name="fontFamily">@font/nanumsquare_regular</item>
         <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="nanumsquare_regular_14">
+        <item name="fontFamily">@font/nanumsquare_regular</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
 

@@ -227,8 +227,41 @@ class RecommendClothesFragment : BaseFragment<FragmentRecommendClothesBinding>()
                 .into(highTempClothesImage[i])
             highTempClothesText[i].text = myStyleText[i]
             if(myStyleText[i].isEmpty()) {
-                highTempClothesImage[i].visibility = View.GONE
-                highTempClothesText[i].visibility = View.GONE
+                highTempClothesImage[i].visibility = View.INVISIBLE
+                highTempClothesText[i].visibility = View.INVISIBLE
+
+                when(i) {
+                    2 -> {
+                        val first = binding.tvTopHighTempFirst.visibility
+                        val second = binding.tvTopHighTempSecond.visibility
+                        val third = binding.tvTopHighTempThird.visibility
+                        if(first == View.INVISIBLE && second == View.INVISIBLE && third == View.INVISIBLE) {
+                            binding.tvTopHighTempEmpty.visibility = View.VISIBLE
+                        } else {
+                            binding.tvTopHighTempEmpty.visibility = View.GONE
+                        }
+                    }
+                    5 -> {
+                        val first = binding.tvOuterHighTempFirst.visibility
+                        val second = binding.tvOuterHighTempSecond.visibility
+                        val third = binding.tvOuterHighTempThird.visibility
+                        if(first == View.INVISIBLE && second == View.INVISIBLE && third == View.INVISIBLE) {
+                            binding.tvOuterHighTempEmpty.visibility = View.VISIBLE
+                        } else {
+                            binding.tvOuterHighTempEmpty.visibility = View.GONE
+                        }
+                    }
+                    8 -> {
+                        val first = binding.tvBottomHighTempFirst.visibility
+                        val second = binding.tvBottomHighTempSecond.visibility
+                        val third = binding.tvBottomHighTempThird.visibility
+                        if(first == View.INVISIBLE && second == View.INVISIBLE && third == View.INVISIBLE) {
+                            binding.tvBottomHighTempEmpty.visibility = View.VISIBLE
+                        } else {
+                            binding.tvBottomHighTempEmpty.visibility = View.GONE
+                        }
+                    }
+                }
             }
         }
     }
@@ -259,8 +292,41 @@ class RecommendClothesFragment : BaseFragment<FragmentRecommendClothesBinding>()
                 .into(lowTempClothesImage[i])
             lowTempClothesText[i].text = myStyleText[i]
             if(myStyleText[i].isEmpty()) {
-                lowTempClothesImage[i].visibility = View.GONE
-                lowTempClothesText[i].visibility = View.GONE
+                lowTempClothesImage[i].visibility = View.INVISIBLE
+                lowTempClothesText[i].visibility = View.INVISIBLE
+
+                when(i) {
+                    2 -> {
+                        val first = binding.tvTopLowTempFirst.visibility
+                        val second = binding.tvTopLowTempSecond.visibility
+                        val third = binding.tvTopLowTempThird.visibility
+                        if(first == View.INVISIBLE && second == View.INVISIBLE && third == View.INVISIBLE) {
+                            binding.tvTopLowTempEmpty.visibility = View.VISIBLE
+                        } else {
+                            binding.tvTopLowTempEmpty.visibility = View.GONE
+                        }
+                    }
+                    5 -> {
+                        val first = binding.tvOuterLowTempFirst.visibility
+                        val second = binding.tvOuterLowTempSecond.visibility
+                        val third = binding.tvOuterLowTempThird.visibility
+                        if(first == View.INVISIBLE && second == View.INVISIBLE && third == View.INVISIBLE) {
+                            binding.tvOuterLowTempEmpty.visibility = View.VISIBLE
+                        } else {
+                            binding.tvOuterLowTempEmpty.visibility = View.GONE
+                        }
+                    }
+                    8 -> {
+                        val first = binding.tvBottomLowTempFirst.visibility
+                        val second = binding.tvBottomLowTempSecond.visibility
+                        val third = binding.tvBottomLowTempThird.visibility
+                        if(first == View.INVISIBLE && second == View.INVISIBLE && third == View.INVISIBLE) {
+                            binding.tvBottomLowTempEmpty.visibility = View.VISIBLE
+                        } else {
+                            binding.tvBottomLowTempEmpty.visibility = View.GONE
+                        }
+                    }
+                }
             }
         }
     }

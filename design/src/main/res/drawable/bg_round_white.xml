@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 라인 블랙-->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
     <solid android:color="#FFFFFF"/>
     <stroke
         android:width="2dp"
-        android:color="#000000"/>
+        android:color="@color/sub_gray_color"/>
+    <corners android:radius="36dp" /> <!-- 라운드 반지름 -->
 </shape>

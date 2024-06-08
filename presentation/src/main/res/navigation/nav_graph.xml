@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home_nav_graph"
+    android:background="@color/main_bg_color"
     app:startDestination="@id/weather_fragment">
 
     <fragment
