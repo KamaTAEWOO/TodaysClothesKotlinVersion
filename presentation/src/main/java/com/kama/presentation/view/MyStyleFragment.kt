@@ -21,6 +21,7 @@ import timber.log.Timber
 
 /**
  * TODO : 나만에 스타일 앨범 만들기 - 캡쳐 사진 모아서 올릴 수 있는 공간
+ *  - 인스타 처럼 사진 올리기
  * */
 
 @AndroidEntryPoint
