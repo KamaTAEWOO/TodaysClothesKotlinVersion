@@ -56,6 +56,9 @@ class RecommendClothesFragment : BaseFragment<FragmentRecommendClothesBinding>()
     private fun initAppBar() {
         Timber.i("$TAG::initAppBar()")
         binding.layoutAppbar.tvTitle.text = getString(R.string.recommend_clothes_fragment)
+        binding.layoutAppbar.ivSetting.setOnClickListener {
+            (activity as MainViewActivity).showPopupMenu(it)
+        }
     }
 
     private fun init() {
