@@ -7,7 +7,7 @@
 
 
 ### 1. 첫 화면  
-![Screenshot_20240622_191509_ ](https://github.com/KamaTAEWOO/Todays_clothes/assets/48404941/50397bcb-6be1-452d-9ccd-7a94230cd274)
+<img src="https://github.com/KamaTAEWOO/Todays_clothes/assets/48404941/50397bcb-6be1-452d-9ccd-7a94230cd274" alt="대체 텍스트" style="width: 500px;">
 - 앱 실행 시, 앱의 이름과 이미지를 보여주며 3초 후 다음 화면으로 넘어감
 
 
