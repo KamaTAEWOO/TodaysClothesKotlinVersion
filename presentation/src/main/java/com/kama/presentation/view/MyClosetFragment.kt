@@ -65,7 +65,7 @@ class MyClosetFragment : BaseFragment<FragmentMyClosetBinding>(), AlbumAddAdapte
      * TODO : 이미지 로드 시 현재 없는 이미지나 흰색 이미지로 뜨는 경우 자동 삭제 처리
      * */
     private fun imageLoadInit() {
-        binding.rvMyAlbums.layoutManager = GridLayoutManager(requireContext(), 3)
+        binding.rvMyAlbums.layoutManager = GridLayoutManager(requireContext(), 2)
         val initDrawable: MutableList<Uri> = mutableListOf()
         initDrawable.add(WeatherUtil.getResourceUri(requireContext(), com.kama.design.R.drawable.ic_buttonplus))
         // 데이터 있을 시 데이터 로드
