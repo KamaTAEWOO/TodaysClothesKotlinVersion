@@ -52,7 +52,7 @@
         android:layout_gravity="center"
         android:layout_marginBottom="264dp"
         android:text="@string/splash_name3"
-        style="@style/nanumsquare_regular_15"
+        style="@style/nanumsquare_bold_18"
         android:textColor="@color/black"
         app:layout_constraintTop_toBottomOf="@id/tv_name2"
         app:layout_constraintStart_toStartOf="parent"
