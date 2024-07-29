@@ -4,6 +4,7 @@ import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
+// hilt 적용
 @HiltAndroidApp
 class App : Application() {
 
